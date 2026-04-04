@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kore Agency | Digital Transformation</title>
+    <title>KORE | Digital Transformation Agency</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Magra:wght@400;700&family=Overlock:wght@400;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Magra:wght@400&family=Overlock:wght@400&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
@@ -17,24 +15,178 @@
             --prunelle: #742755;
             --rose: #FF5B8E;
             --grege: #EAD9C8;
-            --ether: #B6C7D8;
         }
 
         body {
             font-family: 'Overlock', sans-serif;
             background: linear-gradient(180deg, var(--encre) 0%, var(--prunelle) 100%);
             color: var(--grege);
-            overflow-x: hidden;
+            background-attachment: fixed;
         }
 
-        h1, h2, h3, .font-magra {
+        h1, h2, h3, h4, .font-magra {
             font-family: 'Magra', sans-serif;
+            font-weight: 400 !important; /* Strict Regular */
             text-transform: uppercase;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.1em;
         }
 
-        .brutalist-border {
-            border: 1px solid var(--grege);
+        .border-kore { border: 1px solid rgba(234, 217, 200, 0.2); }
+        
+        .cta-glow {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-glow:hover {
+            box-shadow: 0 0 30px rgba(255, 91, 142, 0.4);
+            border-color: var(--rose);
+            color: var(--rose);
+        }
+
+        .grain {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://grainy-gradients.vercel.app/noise.svg');
+            opacity: 0.04; pointer-events: none; z-index: 99;
+        }
+
+        /* Masquer la scrollbar */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: var(--encre); }
+        ::-webkit-scrollbar-thumb { background: var(--prunelle); }
+    </style>
+</head>
+<body>
+    <div class="grain"></div>
+
+    <nav class="fixed w-full z-50 mix-blend-difference px-8 py-6 flex justify-between items-center">
+        <div class="text-xl font-magra tracking-[0.3em]">KORE</div>
+        <div class="hidden md:flex space-x-12 text-[10px] tracking-[0.2em] uppercase">
+            <a href="#expertise" class="hover:text-[#FF5B8E] transition">Solutions</a>
+            <a href="#agency" class="hover:text-[#FF5B8E] transition">L'Agence</a>
+            <a href="#contact" class="border-kore px-6 py-2 hover:bg-white hover:text-black transition">Audit Gratuit</a>
+        </div>
+    </nav>
+
+    <section class="relative min-h-screen flex flex-col justify-center px-8 md:px-24 pt-20">
+        <div data-aos="fade-up" data-aos-duration="1500">
+            <div class="flex items-center space-x-4 mb-6 opacity-60">
+                <span class="h-[1px] w-12 bg-white"></span>
+                <p class="text-[10px] tracking-[0.4em] uppercase">Architecture & Branding de rupture</p>
+            </div>
+            <h1 class="text-6xl md:text-[10vw] leading-[0.9] mb-12">
+                RECONSTRUIRE<br>VOTRE CORE.
+            </h1>
+            <div class="grid md:grid-cols-2 gap-12 items-end">
+                <p class="text-lg md:text-xl opacity-70 leading-relaxed max-w-md">
+                    Nous ne faisons pas que du design. Nous forgeons l'infrastructure technique et l'identité visuelle qui propulsent les leaders comme ZenWell dans l'ère du digital natif.
+                </p>
+                <div class="flex flex-col space-y-6">
+                    <a href="#contact" class="cta-glow border-kore w-fit px-12 py-5 text-sm font-magra tracking-widest bg-white text-black hover:bg-transparent">
+                        COMMENCER LA TRANSFORMATION
+                    </a>
+                    <p class="text-[10px] opacity-40 tracking-widest uppercase">Expertise Cloud, BI, IA & Contenu</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="expertise" class="py-32 px-8 md:px-24">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-0 border-kore">
+            <div class="p-12 border-kore group hover:bg-[#FF5B8E]/5 transition-colors" data-aos="fade-up">
+                <p class="text-[10px] text-[#FF5B8E] mb-8">01 / STRATÉGIE</p>
+                <h3 class="text-2xl mb-6">Repositionnement</h3>
+                <p class="opacity-60 text-sm leading-relaxed mb-8 text-justify">
+                    Audit profond de l'écosystème ZenWell. Nous redéfinissons votre ADN pour capturer l'audience Gen Z et créer une préférence de marque absolue.
+                </p>
+            </div>
+            <div class="p-12 border-kore group hover:bg-[#FF5B8E]/5 transition-colors" data-aos="fade-up" data-aos-delay="100">
+                <p class="text-[10px] text-[#FF5B8E] mb-8">02 / TECH</p>
+                <h3 class="text-2xl mb-6">Cloud & Architecture</h3>
+                <p class="opacity-60 text-sm leading-relaxed mb-8 text-justify">
+                    Migration vers des infrastructures Cloud scalables. Sécurisation critique et fluidité totale des flux de données membres.
+                </p>
+            </div>
+            <div class="p-12 border-kore group hover:bg-[#FF5B8E]/5 transition-colors" data-aos="fade-up" data-aos-delay="200">
+                <p class="text-[10px] text-[#FF5B8E] mb-8">03 / DATA</p>
+                <h3 class="text-2xl mb-6">BI & BIODASHBOARDS</h3>
+                <p class="opacity-60 text-sm leading-relaxed mb-8 text-justify">
+                    Transformation de la data en levier de croissance. Tableaux de bord prédictifs pour piloter votre rentabilité en temps réel.
+                </p>
+            </div>
+            <div class="p-12 border-kore group hover:bg-[#FF5B8E]/5 transition-colors" data-aos="fade-up">
+                <p class="text-[10px] text-[#FF5B8E] mb-8">04 / AUTOMATION</p>
+                <h3 class="text-2xl mb-6">Workflows IA</h3>
+                <p class="opacity-60 text-sm leading-relaxed mb-8 text-justify">
+                    Automatisation des processus opérationnels de vos salles. Gagnez en efficience grâce aux outils IA et No-code de pointe.
+                </p>
+            </div>
+            <div class="p-12 border-kore group hover:bg-[#FF5B8E]/5 transition-colors" data-aos="fade-up" data-aos-delay="100">
+                <p class="text-[10px] text-[#FF5B8E] mb-8">05 / DESIGN</p>
+                <h3 class="text-2xl mb-6">Système Immersif</h3>
+                <p class="opacity-60 text-sm leading-relaxed mb-8 text-justify">
+                    Design System unifié pour ZenWell. Une expérience utilisateur sans couture, de l'application mobile aux interfaces de gestion.
+                </p>
+            </div>
+            <div class="p-12 border-kore group hover:bg-[#FF5B8E]/5 transition-colors" data-aos="fade-up" data-aos-delay="200">
+                <p class="text-[10px] text-[#FF5B8E] mb-8">06 / CONTENT</p>
+                <h3 class="text-2xl mb-6">Social Assets</h3>
+                <p class="opacity-60 text-sm leading-relaxed mb-8 text-justify">
+                    Production de contenus verticaux haute fidélité. Storytelling de marque pensé pour l'engagement et la conversion sociale.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="agency" class="py-32 px-8 md:px-24">
+        <h2 class="text-4xl mb-24 text-center">LES ESPRITS DERRIÈRE KORE</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-1px bg-[#EAD9C8]/20 border-kore">
+            <div class="bg-transparent p-12 text-center" data-aos="fade-up">
+                <div class="aspect-[3/4] bg-[#142030] mb-8 border-kore grayscale hover:grayscale-0 transition-all duration-700 overflow-hidden">
+                    <div class="w-full h-full flex items-center justify-center opacity-20 text-[10px] uppercase">Alyssa / Creative</div>
+                </div>
+                <h4 class="text-xl mb-2 tracking-widest">Alyssa</h4>
+                <p class="text-[10px] uppercase text-[#FF5B8E] tracking-[0.3em]">Direction Artistique & Contenu</p>
+            </div>
+            <div class="bg-transparent p-12 text-center" data-aos="fade-up" data-aos-delay="100">
+                <div class="aspect-[3/4] bg-[#142030] mb-8 border-kore grayscale hover:grayscale-0 transition-all duration-700 overflow-hidden">
+                     <div class="w-full h-full flex items-center justify-center opacity-20 text-[10px] uppercase">Sarah / Tech</div>
+                </div>
+                <h4 class="text-xl mb-2 tracking-widest">Sarah</h4>
+                <p class="text-[10px] uppercase text-[#FF5B8E] tracking-[0.3em]">Cloud & Software Engineering</p>
+            </div>
+            <div class="bg-transparent p-12 text-center" data-aos="fade-up" data-aos-delay="200">
+                <div class="aspect-[3/4] bg-[#142030] mb-8 border-kore grayscale hover:grayscale-0 transition-all duration-700 overflow-hidden">
+                     <div class="w-full h-full flex items-center justify-center opacity-20 text-[10px] uppercase">Manon / Strat</div>
+                </div>
+                <h4 class="text-xl mb-2 tracking-widest">Manon</h4>
+                <p class="text-[10px] uppercase text-[#FF5B8E] tracking-[0.3em]">Strategy & Business Intelligence</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="py-32 px-8 md:px-24 flex flex-col items-center border-t border-white/10">
+        <h2 class="text-5xl md:text-7xl text-center mb-16 leading-tight" data-aos="zoom-out">PRÊT À RÉVOLUTIONNER<br>VOTRE MODÈLE ?</h2>
+        <a href="mailto:hello@kore.agency" class="cta-glow border-kore px-16 py-6 text-sm font-magra tracking-widest hover:bg-white hover:text-black transition-all">
+            DÉMARRER L'AUDIT ZENWELL
+        </a>
+        <div class="mt-32 w-full flex justify-between items-end opacity-40 text-[8px] tracking-[0.4em] uppercase">
+            <p>KORE Agency © 2026</p>
+            <p>Deployed via Vercel x GitHub</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+    </script>
+</body>
+</html>            border: 1px solid var(--grege);
         }
 
         .btn-kore {

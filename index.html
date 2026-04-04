@@ -1,40 +1,158 @@
 <!DOCTYPE html>
-<html lang="fr" class="scroll-smooth">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KORE | Digital Transformation</title>
+    <title>Kore Agency | Digital Transformation</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Magra:wght@400;700&family=Overlock:wght@400;700&display=swap" rel="stylesheet">
+    
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
     <style>
         :root {
             --encre: #142030;
             --prunelle: #742755;
-            --impulsion: #FF5B8E;
+            --rose: #FF5B8E;
             --grege: #EAD9C8;
+            --ether: #B6C7D8;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--encre);
+            font-family: 'Overlock', sans-serif;
+            background: linear-gradient(180deg, var(--encre) 0%, var(--prunelle) 100%);
             color: var(--grege);
             overflow-x: hidden;
         }
 
-        h1, h2, h3, .serif {
-            font-family: 'Playfair Display', serif;
+        h1, h2, h3, .font-magra {
+            font-family: 'Magra', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
-        .bg-main-gradient {
-            background: linear-gradient(180deg, #142030 0%, #742755 100%);
+        .brutalist-border {
+            border: 1px solid var(--grege);
         }
 
-        /* Overlay Grain Texture */
-        .noise::before {
-            content: "";
+        .btn-kore {
+            background-color: var(--rose);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .btn-kore:hover {
+            background-color: transparent;
+            border: 1px solid var(--rose);
+            color: var(--rose);
+            transform: translateY(-2px);
+        }
+
+        /* Effet de grain subtil */
+        .noise {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0.03;
+            z-index: 9999;
             pointer-events: none;
+            background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+        }
+    </style>
+</head>
+<body class="bg-no-repeat min-h-screen">
+    <div class="noise"></div>
+
+    <nav class="flex justify-between items-center p-8 border-b border-white/10 sticky top-0 bg-[#142030]/80 backdrop-blur-md z-50">
+        <div class="text-2xl font-magra font-bold tracking-tighter">KORE <span class="font-light text-sm italic">agency</span></div>
+        <div class="hidden md:flex space-x-8 text-sm uppercase tracking-widest">
+            <a href="#expertises" class="hover:text-[#FF5B8E] transition">Expertises</a>
+            <a href="#team" class="hover:text-[#FF5B8E] transition">L'Équipe</a>
+            <a href="#contact" class="hover:text-[#FF5B8E] transition">Contact</a>
+        </div>
+    </nav>
+
+    <section class="h-screen flex flex-col justify-center px-8 md:px-24">
+        <div data-aos="fade-up" data-aos-duration="1000">
+            <p class="text-[#FF5B8E] font-magra mb-4 tracking-[0.3em]">RE-KORE YOUR BUSINESS</p>
+            <h1 class="text-5xl md:text-8xl font-bold leading-none mb-8">LE FUTUR A UN CŒUR.<br>C'EST LE VÔTRE.</h1>
+            <p class="max-w-xl text-lg mb-10 opacity-80">
+                Kore fusionne l'ingénierie tech de pointe (Cloud, BI, Automatisation) et le branding éditorial pour transformer ZenWell en leader du bien-être connecté.
+            </p>
+            <div class="flex space-x-4">
+                <button class="btn-kore px-10 py-4 font-magra text-sm rounded-none">AUDIT YOUR CORE</button>
+                <div class="hidden md:flex items-center space-x-4 ml-12 opacity-50 text-xs uppercase tracking-widest">
+                    <span>Trusted by</span>
+                    <div class="h-[1px] w-12 bg-white"></div>
+                    <span>AWS • VERCEL • GITHUB</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="expertises" class="py-24 px-8 md:px-24 bg-black/20">
+        <h2 class="text-3xl font-magra mb-16" data-aos="fade-right">NOS PILIERS</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-0">
+            <div class="brutalist-border p-8 hover:bg-[#FF5B8E]/10 transition-all group" data-aos="zoom-in">
+                <span class="text-xs text-[#FF5B8E]">01. STRATÉGIE</span>
+                <h3 class="text-xl my-4">Audit & Repositionnement</h3>
+                <p class="text-sm opacity-70">Analyse de l'ADN de ZenWell et redéfinition du positionnement pour dominer le secteur Gym-App.</p>
+            </div>
+            <div class="brutalist-border p-8 hover:bg-[#FF5B8E]/10 transition-all" data-aos="zoom-in" data-aos-delay="100">
+                <span class="text-xs text-[#B6C7D8]">02. INFRA</span>
+                <h3 class="text-xl my-4">Cloud & Architecture</h3>
+                <p class="text-sm opacity-70">Déploiement scalable sur AWS. Performance, sécurité et disponibilité critique des données membres.</p>
+            </div>
+            <div class="brutalist-border p-8 hover:bg-[#FF5B8E]/10 transition-all" data-aos="zoom-in" data-aos-delay="200">
+                <span class="text-xs text-[#742755]">03. TECH</span>
+                <h3 class="text-xl my-4">Ingénierie & Automatisation</h3>
+                <p class="text-sm opacity-70">Développement de workflows automatisés et intégration No-Code/Pro-Code pour l'efficience opérationnelle.</p>
+            </div>
+            </div>
+    </section>
+
+    <section id="team" class="py-24 px-8 md:px-24">
+        <h2 class="text-3xl font-magra mb-16 text-center" data-aos="fade-up">L'ÉQUIPE KORE</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div class="text-center" data-aos="fade-up">
+                <div class="w-full aspect-square bg-[#EAD9C8]/10 mb-6 brutalist-border flex items-center justify-center grayscale hover:grayscale-0 transition">
+                    <span class="text-xs opacity-30 italic">[Photo Manon]</span>
+                </div>
+                <h4 class="font-magra text-lg">Manon</h4>
+                <p class="text-xs uppercase text-[#FF5B8E] tracking-widest">Strategy & BI</p>
+            </div>
+            <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+                <div class="w-full aspect-square bg-[#EAD9C8]/10 mb-6 brutalist-border flex items-center justify-center grayscale hover:grayscale-0 transition">
+                    <span class="text-xs opacity-30 italic">[Photo Sarah]</span>
+                </div>
+                <h4 class="font-magra text-lg">Sarah</h4>
+                <p class="text-xs uppercase text-[#FF5B8E] tracking-widest">Tech & Cloud</p>
+            </div>
+            <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                <div class="w-full aspect-square bg-[#EAD9C8]/10 mb-6 brutalist-border flex items-center justify-center grayscale hover:grayscale-0 transition">
+                    <span class="text-xs opacity-30 italic">[Photo Alyssa]</span>
+                </div>
+                <h4 class="font-magra text-lg">Alyssa</h4>
+                <p class="text-xs uppercase text-[#FF5B8E] tracking-widest">Creative & Content</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="p-24 border-t border-white/10 text-center">
+        <h2 class="text-4xl font-magra mb-8">PRÊT À REJOINDRE LE CORE ?</h2>
+        <button class="btn-kore px-12 py-4 rounded-none font-magra mb-12">DÉMARRER LE PROJET</button>
+        <p class="text-[10px] uppercase tracking-widest opacity-40">Kore Agency © 2026 • Powered by Vercel & GitHub</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+        // Le logo sera inséré ici dynamiquement une fois fourni
+        console.log("Kore Agency Ready to deploy on Vercel.");
+    </script>
+</body>
+</html>            pointer-events: none;
             opacity: 0.04;
             z-index: 50;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");

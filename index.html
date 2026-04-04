@@ -3,38 +3,237 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KORE Agency | Re-Kore Your Business</title>
-    <link href="https://fonts.googleapis.com/css2?family=Magra&family=Overlock&display=swap" rel="stylesheet">
+    <title>Kore | Re-Kore Your Business</title>
+    <link href="https://fonts.googleapis.com/css2?family=Magra:wght@400;700&family=Overlock:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     
-    <style>
-        :root {
-            --encre-nocturne: #142030;
-            --prunelle-vision: #742755;
-            --grege: #D1D1C7;
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        encreNocturne: '#142030',
+                        prunelleVision: '#742755',
+                        inpulsionRose: '#FF5B8E',
+                    },
+                    fontFamily: {
+                        magra: ['Magra', 'sans-serif'],
+                        overlock: ['Overlock', 'sans-serif'],
+                    },
+                    letterSpacing: {
+                        ultra: '0.15em',
+                    }
+                }
+            }
         }
+    </script>
 
+    <style>
         body {
-            background: linear-gradient(135deg, var(--encre-nocturne) 0%, var(--prunelle-vision) 100%);
+            background: linear-gradient(180deg, #142030 0%, #742755 100%);
             background-attachment: fixed;
-            color: #FFFFFF;
+            color: #ffffff;
             font-family: 'Overlock', sans-serif;
             overflow-x: hidden;
         }
 
-        .font-magra { font-family: 'Magra', sans-serif; text-transform: uppercase; letter-spacing: 0.25em; }
-        
-        /* Grain Texture Overlay */
+        .magra-title {
+            font-family: 'Magra', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
         .noise-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none;
+            background: url('https://grainy-gradients.vercel.app/noise.svg');
             opacity: 0.04;
-            z-index: 50;
-            background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+            pointer-events: none;
+            z-index: 9999;
         }
+
+        .mask-text {
+            overflow: hidden;
+            display: block;
+        }
+
+        .reveal-up {
+            transform: translateY(100px);
+            opacity: 0;
+        }
+
+        .service-card {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .service-card:hover {
+            border-color: #FF5B8E;
+        }
+
+        .cta-glow:hover {
+            box-shadow: 0 0 30px rgba(255, 91, 142, 0.4);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <div class="noise-overlay"></div>
+
+    <nav class="fixed top-0 left-0 p-8 z-50">
+        <img src="Logo 2.png" alt="Kore Logo" class="h-8 md:h-12 object-contain">
+    </nav>
+
+    <section class="min-h-screen flex flex-col justify-center px-8 md:px-24">
+        <div class="mask-text">
+            <h1 class="magra-title text-5xl md:text-8xl font-light leading-tight hero-title">
+                RE-KORE<br>YOUR BUSINESS
+            </h1>
+        </div>
+        
+        <div class="mt-12 reveal-up hero-cta">
+            <button class="magra-title border border-white px-12 py-5 text-sm hover:bg-white hover:text-encreNocturne transition-all duration-500 rounded-none">
+                Begin Transformation
+            </button>
+        </div>
+
+        <div class="mt-32 border-t border-white/10 pt-8 reveal-up">
+            <p class="magra-title text-[10px] mb-6 opacity-50">Trusted by Global Leaders</p>
+            <div class="flex flex-wrap gap-12 items-center opacity-30 grayscale invert">
+                <span class="text-xl font-bold">LULULEMON</span>
+                <span class="text-xl font-bold">PELOTON</span>
+                <span class="text-xl font-bold">NIKE</span>
+                <span class="text-xl font-bold">EQUINOX</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="min-h-screen py-32 px-8 md:px-24 bg-black/20">
+        <div class="max-w-4xl">
+            <h2 class="magra-title text-inpulsionRose text-xs mb-4">Diagnosis : ZenWell</h2>
+            <h3 class="magra-title text-3xl md:text-5xl mb-12 reveal-up">Why your current Core is failing.</h3>
+            <p class="text-xl md:text-2xl font-light opacity-80 leading-relaxed reveal-up">
+                ZenWell's expansion is throttled by legacy architectures. Your Cloud infrastructure lacks the elasticity for global scaling, and your BI silos prevent real-time decision making. A surface-level fix isn't enough. You need a Re-Kore.
+            </p>
+        </div>
+    </section>
+
+    <section class="py-32 px-8 md:px-24">
+        <h2 class="magra-title text-xs mb-16 opacity-50">Core Solutions</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-0">
+            <div class="service-card p-12 aspect-square flex flex-col justify-between reveal-up">
+                <span class="magra-title text-xs">01</span>
+                <div>
+                    <h4 class="magra-title text-2xl mb-4">Audit</h4>
+                    <p class="opacity-60 text-sm">Chirurgical analysis of your technical debt and workflows.</p>
+                </div>
+            </div>
+            <div class="service-card p-12 aspect-square flex flex-col justify-between reveal-up">
+                <span class="magra-title text-xs">02</span>
+                <div>
+                    <h4 class="magra-title text-2xl mb-4">Cloud</h4>
+                    <p class="opacity-60 text-sm">High-availability architectures engineered for 99.9% uptime.</p>
+                </div>
+            </div>
+            <div class="service-card p-12 aspect-square flex flex-col justify-between reveal-up">
+                <span class="magra-title text-xs">03</span>
+                <div>
+                    <h4 class="magra-title text-2xl mb-4">Software</h4>
+                    <p class="opacity-60 text-sm">Bespoke digital tools designed for operational excellence.</p>
+                </div>
+            </div>
+            <div class="service-card p-12 aspect-square flex flex-col justify-between reveal-up">
+                <span class="magra-title text-xs">04</span>
+                <div>
+                    <h4 class="magra-title text-2xl mb-4">BI</h4>
+                    <p class="opacity-60 text-sm">Turning raw data into predictive growth intelligence.</p>
+                </div>
+            </div>
+            <div class="service-card p-12 aspect-square flex flex-col justify-between reveal-up">
+                <span class="magra-title text-xs">05</span>
+                <div>
+                    <h4 class="magra-title text-2xl mb-4">UX</h4>
+                    <p class="opacity-60 text-sm">Frictionless interfaces for high-end digital experiences.</p>
+                </div>
+            </div>
+            <div class="service-card p-12 aspect-square flex flex-col justify-between reveal-up">
+                <span class="magra-title text-xs">06</span>
+                <div>
+                    <h4 class="magra-title text-2xl mb-4">Content</h4>
+                    <p class="opacity-60 text-sm">Strategic narratives that resonate with premium audiences.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 px-8 md:px-24 border-t border-white/5">
+        <h2 class="magra-title text-xs mb-16 text-center">Executive Partners</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div class="reveal-up text-center">
+                <div class="aspect-[3/4] bg-white/5 mb-6 grayscale hover:grayscale-0 transition-all duration-700"></div>
+                <h5 class="magra-title text-xl">Manon</h5>
+                <p class="opacity-50 text-xs mt-2 uppercase tracking-widest">Strategy</p>
+            </div>
+            <div class="reveal-up text-center" style="transition-delay: 0.2s;">
+                <div class="aspect-[3/4] bg-white/5 mb-6 grayscale hover:grayscale-0 transition-all duration-700"></div>
+                <h5 class="magra-title text-xl">Sarah</h5>
+                <p class="opacity-50 text-xs mt-2 uppercase tracking-widest">Technology</p>
+            </div>
+            <div class="reveal-up text-center" style="transition-delay: 0.4s;">
+                <div class="aspect-[3/4] bg-white/5 mb-6 grayscale hover:grayscale-0 transition-all duration-700"></div>
+                <h5 class="magra-title text-xl">Alyssa</h5>
+                <p class="opacity-50 text-xs mt-2 uppercase tracking-widest">Design</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-48 px-8 text-center bg-black/40">
+        <h2 class="magra-title text-4xl md:text-6xl mb-12 reveal-up">Ready to upgrade?</h2>
+        <a href="#" class="inline-block magra-title border border-inpulsionRose text-inpulsionRose px-16 py-6 text-sm cta-glow transition-all duration-500 reveal-up">
+            Audit Your Core
+        </a>
+        <p class="mt-24 magra-title text-[10px] opacity-30 tracking-[0.5em]">Kore Agency © 2026</p>
+    </footer>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero Reveal
+        gsap.from(".hero-title", {
+            y: 200,
+            duration: 1.5,
+            ease: "power4.out",
+            delay: 0.5
+        });
+
+        gsap.from(".hero-cta", {
+            opacity: 0,
+            y: 30,
+            duration: 1,
+            delay: 1.2
+        });
+
+        // Universal Scroll Reveal
+        const reveals = document.querySelectorAll('.reveal-up');
+        reveals.forEach((el) => {
+            gsap.to(el, {
+                scrollTrigger: {
+                    trigger: el,
+                    start: "top 85%",
+                    toggleActions: "play none none none"
+                },
+                y: 0,
+                opacity: 1,
+                duration: 1.2,
+                ease: "power3.out",
+                stagger: 0.2
+            });
+        });
+    </script>
+</body>
+</html>        }
 
         .service-card {
             border: 1px solid rgba(209, 209, 199, 0.3);

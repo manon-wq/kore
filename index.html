@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>kore | re-kore your business</title>
+    <title>kore | digital transformation from the inside out</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Magra:wght@400&family=Overlock:wght@400&display=swap" rel="stylesheet">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
     <style>
         :root {
             --encre: #142030;
@@ -23,974 +28,207 @@
         }
 
         body {
-            background: linear-gradient(180deg, var(--encre) 0%, var(--prunelle) 100%);
+            background-color: var(--encre);
             color: var(--ether);
             font-family: 'Overlock', cursive;
-            font-weight: 400;
-            line-height: 1.7;
             overflow-x: hidden;
+            /* Le dégradé subtil qui suit le scroll comme chez Olyn */
+            background: radial-gradient(circle at 50% 0%, var(--prunelle) 0%, var(--encre) 70%);
+            background-attachment: fixed;
         }
 
-        h1, h2, h3 {
-            font-family: 'Magra', sans-serif;
-            font-weight: 400; /* Strictement regular */
-            letter-spacing: -0.02em;
-        }
+        h1, h2, h3 { font-family: 'Magra', sans-serif; font-weight: 400; }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 40px;
-        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
 
-        /* --- Navigation --- */
+        /* --- Header --- */
         nav {
-            height: 100px;
+            position: fixed;
+            top: 0; width: 100%;
+            height: 80px;
             display: flex;
             justify-content: center;
             align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(182, 199, 216, 0.05);
         }
 
-        .logo-kore {
-            height: 50px;
-            opacity: 0.9;
-        }
+        .logo { height: 40px; }
 
         /* --- Hero Section --- */
         .hero {
-            min-height: 85vh;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding-bottom: 100px;
         }
 
-        .urgency {
-            color: var(--impulsion);
-            font-size: 0.8rem;
-            letter-spacing: 4px;
-            margin-bottom: 30px;
-            font-family: 'Magra', sans-serif;
+        .reveal-text {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            opacity: 0; /* Animé par JS */
+            transform: translateY(30px);
         }
 
-        .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            line-height: 1.2;
-            max-width: 900px;
-            margin-bottom: 30px;
-            color: var(--ether);
-        }
-
-        .hero p {
+        .sub-hero {
             font-size: 1.2rem;
+            color: var(--grege);
             max-width: 600px;
-            color: var(--grege);
-            margin-bottom: 50px;
-            opacity: 0.8;
-        }
-
-        /* --- CTA Stylisé --- */
-        .cta-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .btn-kore {
-            position: relative;
-            padding: 20px 50px;
-            color: var(--ether);
-            text-decoration: none;
-            border: 1px solid var(--impulsion);
-            border-radius: 2px; /* Carré/Moderne */
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            background: transparent;
-            font-family: 'Magra', sans-serif;
-            overflow: hidden;
-        }
-
-        .btn-kore:hover {
-            background: var(--impulsion);
-            color: var(--encre);
-            box-shadow: 0 0 30px rgba(255, 91, 142, 0.4);
-        }
-
-        .proof {
-            font-size: 0.75rem;
-            color: var(--ether);
-            opacity: 0.5;
-            letter-spacing: 1px;
-        }
-
-        /* --- Section Manifeste --- */
-        .manifesto-section {
-            padding: 150px 0;
-            border-top: 1px solid rgba(182, 199, 216, 0.05);
-        }
-
-        .manifesto-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 100px;
-            align-items: start;
-        }
-
-        .manifesto-text {
-            font-size: 1.4rem;
-            line-height: 1.8;
-            color: var(--grege);
-        }
-
-        .manifesto-highlight {
-            font-size: 2.2rem;
-            color: var(--ether);
-            font-family: 'Magra', sans-serif;
-            border-left: 1px solid var(--impulsion);
-            padding-left: 40px;
-        }
-
-        /* --- Services Grid --- */
-        .services-section {
-            padding: 100px 0;
-        }
-
-        .section-title {
-            margin-bottom: 80px;
-            font-size: 0.8rem;
-            letter-spacing: 5px;
-            color: var(--impulsion);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1px;
-            background: rgba(182, 199, 216, 0.1); /* Lignes de grille fines */
-        }
-
-        .service-card {
-            background: var(--encre);
-            padding: 60px 40px;
-            transition: background 0.5s ease;
-        }
-
-        .service-card:hover {
-            background: rgba(116, 39, 85, 0.3);
-        }
-
-        .service-card h3 {
-            margin-bottom: 20px;
-            color: var(--grege);
-        }
-
-        /* --- Team --- */
-        .team-section {
-            padding: 150px 0;
-            text-align: center;
-        }
-
-        .team-flex {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 100px;
-        }
-
-        .member h3 {
-            margin-top: 30px;
-            font-size: 1.5rem;
-        }
-
-        .member p {
-            color: var(--impulsion);
-            font-size: 0.9rem;
-        }
-
-        /* --- Footer --- */
-        footer {
-            padding: 100px 0 50px;
-            text-align: center;
-            border-top: 1px solid rgba(182, 199, 216, 0.05);
-        }
-
-        .footer-logo { height: 30px; margin-bottom: 40px; opacity: 0.5; }
-
-        @media (max-width: 900px) {
-            .manifesto-grid, .services-grid { grid-template-columns: 1fr; }
-            .team-flex { flex-direction: column; gap: 60px; }
-        }
-    </style>
-</head>
-<body>
-
-    <nav>
-        <img src="Logo 2.png" alt="kore" class="logo-kore">
-    </nav>
-
-    <section class="container hero">
-        <span class="urgency">l’obsolescence n'attend pas.</span>
-        <h1>digital transformation from the inside out.</h1>
-        <p>nous ne sommes pas là pour ajouter une couche de vernis sur des structures obsolètes. nous extrayons la substance brute.</p>
-        
-        <div class="cta-container">
-            <a href="#" class="btn-kore">re-kore your business</a>
-            <span class="proof">+40 structures propulsées dans le futur</span>
-        </div>
-    </section>
-
-    <section class="manifesto-section">
-        <div class="container manifesto-grid">
-            <div class="manifesto-text">
-                le monde sature. trop de bruit, trop de flux, trop d’interfaces sans âme. le digital a perdu son noyau. sa raison d'être. 
-                <br><br>
-                nous choisissons d'aller loin, en partant du centre.
-            </div>
-            <div class="manifesto-highlight">
-                on nous dit que le digital est virtuel.<br>nous prouvons qu'il est viscéral.
-            </div>
-        </div>
-    </section>
-
-    <section class="container services-section">
-        <span class="section-title">expertises</span>
-        <div class="services-grid">
-            <div class="service-card">
-                <h3>audit & stratégie</h3>
-                <p>re-définir la trajectoire de votre noyau business.</p>
-            </div>
-            <div class="service-card">
-                <h3>architecture cloud</h3>
-                <p>bâtir des fondations invisibles mais indestructibles.</p>
-            </div>
-            <div class="service-card">
-                <h3>ingénierie logicielle</h3>
-                <p>automatiser pour libérer la substance humaine.</p>
-            </div>
-            <div class="service-card">
-                <h3>bi & data analytics</h3>
-                <p>donner une voix aux flux de données.</p>
-            </div>
-            <div class="service-card">
-                <h3>ux/ui design</h3>
-                <p>créer des interfaces qui ont un battement de cœur.</p>
-            </div>
-            <div class="service-card">
-                <h3>branding</h3>
-                <p>incarner votre potentiel dans chaque pixel.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="container team-section">
-        <span class="section-title">curatrices de potentiel</span>
-        <div class="team-flex">
-            <div class="member">
-                <h3>manon</h3>
-                <p>vision & stratégie</p>
-            </div>
-            <div class="member">
-                <h3>sarah</h3>
-                <p>architecture & innovation</p>
-            </div>
-            <div class="member">
-                <h3>alyssa</h3>
-                <p>design & expérience</p>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <img src="Logo 2.png" alt="kore" class="footer-logo">
-        <p style="opacity: 0.4; font-size: 0.8rem;">&copy; 2026 kore agency. from the inside out.</p>
-    </footer>
-
-</body>
-</html>            font-weight: 700;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* --- Header / Nav --- */
-        nav {
-            padding: 30px 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .logo-main {
-            height: 80px;
-            filter: drop-shadow(0 0 10px rgba(182, 199, 216, 0.2));
-        }
-
-        /* --- Hero Section --- */
-        .hero {
-            padding: 80px 0 120px;
-            text-align: center;
-        }
-
-        .urgency-badge {
-            color: var(--impulsion);
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            line-height: 1.1;
-            margin-bottom: 25px;
-            color: var(--ether);
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            max-width: 700px;
-            margin: 0 auto 40px;
-            opacity: 0.9;
-        }
-
-        .btn-primary {
-            display: inline-block;
-            background: var(--impulsion);
-            color: white;
-            padding: 18px 40px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-family: 'Magra', sans-serif;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(255, 91, 142, 0.3);
-        }
-
-        .social-proof {
-            margin-top: 30px;
-            font-size: 0.85rem;
-            color: var(--grege);
-            opacity: 0.8;
-        }
-
-        /* --- Manifeste --- */
-        .manifesto {
-            padding: 100px 0;
-            background: rgba(20, 32, 48, 0.4);
-            text-align: center;
-            border-top: 1px solid rgba(182, 199, 216, 0.1);
-            border-bottom: 1px solid rgba(182, 199, 216, 0.1);
-        }
-
-        .manifesto blockquote {
-            font-size: 1.6rem;
-            max-width: 850px;
-            margin: 0 auto 40px;
-            font-style: italic;
-        }
-
-        /* --- Pillars --- */
-        .pillars {
-            padding: 100px 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-
-        .pillar-card {
-            padding: 40px;
-            border: 1px solid rgba(182, 199, 216, 0.1);
-            border-radius: 20px;
-            transition: background 0.4s ease;
-        }
-
-        .pillar-card:hover {
-            background: rgba(182, 199, 216, 0.05);
-        }
-
-        .pillar-card h3 {
-            color: var(--impulsion);
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-
-        /* --- Services --- */
-        .services {
-            padding: 100px 0;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 50px;
-        }
-
-        .service-item {
-            padding: 30px;
-            background: rgba(116, 39, 85, 0.2);
-            border-radius: 10px;
-            font-family: 'Magra', sans-serif;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .service-item::before {
-            content: '→';
-            margin-right: 15px;
-            color: var(--impulsion);
-        }
-
-        /* --- Team --- */
-        .team {
-            padding: 100px 0;
-            text-align: center;
-        }
-
-        .team-grid {
-            display: flex;
-            justify-content: center;
-            gap: 60px;
-            flex-wrap: wrap;
-            margin-top: 60px;
-        }
-
-        .member {
-            flex: 1;
-            min-width: 200px;
-            max-width: 300px;
-        }
-
-        .member-img {
-            width: 150px;
-            height: 150px;
-            background: var(--grege);
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            filter: grayscale(1);
-            transition: filter 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: var(--encre);
-        }
-
-        .member:hover .member-img {
-            filter: grayscale(0);
-        }
-
-        /* --- Footer --- */
-        footer {
-            padding: 120px 0 60px;
-            text-align: center;
-        }
-
-        .footer-cta h2 {
-            font-size: 3rem;
-            margin-bottom: 40px;
-            color: var(--grege);
-        }
-
-        .footer-bottom {
-            margin-top: 80px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(182, 199, 216, 0.1);
-            font-size: 0.8rem;
-            color: rgba(182, 199, 216, 0.5);
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .team-grid { gap: 30px; }
-        }
-    </style>
-</head>
-<body>
-
-    <nav>
-        <img src="Logo 2.png" alt="kore agency logo" class="logo-main">
-    </nav>
-
-    <header class="container hero">
-        <span class="urgency-badge">l’obsolescence n'attend pas.</span>
-        <h1>digital transformation from the inside out.</h1>
-        <p>re-kore your business. ne vous contentez plus d'une couche de vernis. nous extrayons votre substance brute pour bâtir un futur viscéral.</p>
-        <a href="#contact" class="btn-primary">extraire votre potentiel maintenant</a>
-        <p class="social-proof">+40 structures réalignées cette année. ils nous font confiance.</p>
-    </header>
-
-    <section class="manifesto">
-        <div class="container">
-            <blockquote>
-                "le monde sature. trop de bruit, trop de flux, trop d’interfaces sans âme. dans cette accélération, le digital a perdu son kore. son noyau. sa raison d'être."
-            </blockquote>
-            <h2 class="magra">nous ne sommes pas une agence cosmétique. <br>nous sommes des curateurs de potentiel.</h2>
-        </div>
-    </section>
-
-    <section class="container pillars">
-        <div class="pillar-card">
-            <h3>core values</h3>
-            <p>parce que sans valeurs réelles, la technologie est vide. l'éthique comme moteur de performance.</p>
-        </div>
-        <div class="pillar-card">
-            <h3>core tech</h3>
-            <p>parce que l'innovation doit être solide, pas seulement brillante. des architectures robustes pour durer.</p>
-        </div>
-        <div class="pillar-card">
-            <h3>core human</h3>
-            <p>parce que derrière chaque pixel, il y a un battement de cœur. l'humain au centre de l'expérience.</p>
-        </div>
-    </section>
-
-    <section class="container services">
-        <h2 style="text-align:center;">nos expertises</h2>
-        <div class="services-grid">
-            <div class="service-item">audit et stratégie digitale</div>
-            <div class="service-item">architecture cloud</div>
-            <div class="service-item">ingénierie logicielle et automatisation</div>
-            <div class="service-item">bi et data analytics</div>
-            <div class="service-item">ux/ui</div>
-            <div class="service-item">branding et création de contenus</div>
-        </div>
-    </section>
-
-    <section class="container team">
-        <h2>curatrices de potentiel</h2>
-        <div class="team-grid">
-            <div class="member">
-                <div class="member-img">m</div>
-                <h3 class="magra">manon</h3>
-                <p>vision et stratégie</p>
-            </div>
-            <div class="member">
-                <div class="member-img">s</div>
-                <h3 class="magra">sarah</h3>
-                <p>architecture et innovation</p>
-            </div>
-            <div class="member">
-                <div class="member-img">a</div>
-                <h3 class="magra">alyssa</h3>
-                <p>design et expérience</p>
-            </div>
-        </div>
-        <p style="margin-top: 40px; color: var(--grege);">trois expertes, une méthode unique : aller chercher le centre pour aller plus loin.</p>
-    </section>
-
-    <footer id="contact">
-        <div class="container footer-cta">
-            <h2>votre transformation commence au noyau.</h2>
-            <a href="mailto:contact@kore.agency" class="btn-primary">contactez manon, sarah et alyssa</a>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 kore agency. on nous dit d'aller vite. nous choisissons d'aller loin.</p>
-        </div>
-    </footer>
-
-</body>
-</html>            color: #ffffff;
-            font-family: 'Overlock', sans-serif;
-            overflow-x: hidden;
-        }
-
-        .magra-title {
-            font-family: 'Magra', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-        }
-
-        .noise-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: url('https://grainy-gradients.vercel.app/noise.svg');
-            opacity: 0.04;
-            pointer-events: none;
-            z-index: 9999;
-        }
-
-        .mask-text {
-            overflow: hidden;
-            display: block;
-        }
-
-        .reveal-up {
-            transform: translateY(100px);
+            margin-bottom: 2rem;
             opacity: 0;
         }
 
-        .service-card {
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        .btn-main {
+            padding: 1.2rem 2.5rem;
+            border: 1px solid var(--impulsion);
+            color: var(--ether);
+            text-decoration: none;
+            position: relative;
+            transition: 0.4s;
+            overflow: hidden;
         }
 
-        .service-card:hover {
-            border-color: #FF5B8E;
+        .btn-main:hover {
+            background: var(--impulsion);
+            color: var(--encre);
+            box-shadow: 0 0 40px rgba(255, 91, 142, 0.4);
         }
 
-        .cta-glow:hover {
-            box-shadow: 0 0 30px rgba(255, 91, 142, 0.4);
+        /* --- Grid Section (Style Olyn Cards) --- */
+        .section { padding: 100px 0; }
+        
+        .grid-services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-top: 60px;
         }
+
+        .card {
+            background: rgba(182, 199, 216, 0.03);
+            border: 1px solid rgba(182, 199, 216, 0.1);
+            padding: 3rem;
+            transition: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+            position: relative;
+        }
+
+        .card:hover {
+            border-color: var(--impulsion);
+            transform: translateY(-10px);
+            background: rgba(116, 39, 85, 0.1);
+        }
+
+        .card h3 { color: var(--impulsion); margin-bottom: 1rem; font-size: 1.5rem; }
+
+        /* --- L'urgence / Social Proof --- */
+        .counter-box {
+            background: var(--grege);
+            color: var(--encre);
+            padding: 4rem 0;
+            text-align: center;
+            margin: 100px 0;
+        }
+
+        .number { font-size: 4rem; font-family: 'Magra'; display: block; }
+
+        /* --- Footer --- */
+        footer {
+            padding: 80px 0;
+            text-align: center;
+            border-top: 1px solid rgba(182, 199, 216, 0.1);
+        }
+
     </style>
 </head>
-<body class="antialiased">
+<body>
 
-    <div class="noise-overlay"></div>
-
-    <nav class="fixed top-0 left-0 p-8 z-50">
-        <img src="Logo 2.png" alt="Kore Logo" class="h-8 md:h-12 object-contain">
+    <nav>
+        <img src="Logo 2.png" alt="kore" class="logo">
     </nav>
 
-    <section class="min-h-screen flex flex-col justify-center px-8 md:px-24">
-        <div class="mask-text">
-            <h1 class="magra-title text-5xl md:text-8xl font-light leading-tight hero-title">
-                RE-KORE<br>YOUR BUSINESS
-            </h1>
-        </div>
-        
-        <div class="mt-12 reveal-up hero-cta">
-            <button class="magra-title border border-white px-12 py-5 text-sm hover:bg-white hover:text-encreNocturne transition-all duration-500 rounded-none">
-                Begin Transformation
-            </button>
-        </div>
+    <section class="container hero">
+        <h1 class="reveal-text">digital transformation<br>from the inside out.</h1>
+        <p class="sub-hero">re-kore your business. l’obsolescence n'attend pas. nous extrayons votre substance brute pour bâtir un futur viscéral.</p>
+        <a href="#" class="btn-main">extraire votre potentiel</a>
+    </section>
 
-        <div class="mt-32 border-t border-white/10 pt-8 reveal-up">
-            <p class="magra-title text-[10px] mb-6 opacity-50">Trusted by Global Leaders</p>
-            <div class="flex flex-wrap gap-12 items-center opacity-30 grayscale invert">
-                <span class="text-xl font-bold">LULULEMON</span>
-                <span class="text-xl font-bold">PELOTON</span>
-                <span class="text-xl font-bold">NIKE</span>
-                <span class="text-xl font-bold">EQUINOX</span>
+    <section class="container section">
+        <h2 style="font-size: 2rem; border-left: 3px solid var(--impulsion); padding-left: 20px;">expertises core</h2>
+        <div class="grid-services">
+            <div class="card">
+                <h3>audit & stratégie</h3>
+                <p>re-définir la trajectoire de votre noyau business face à la saturation du marché.</p>
+            </div>
+            <div class="card">
+                <h3>architecture cloud</h3>
+                <p>des structures solides, invisibles, mais indestructibles pour porter votre croissance.</p>
+            </div>
+            <div class="card">
+                <h3>ingénierie logicielle</h3>
+                <p>automatisation intelligente pour replacer l'humain au centre du battement de cœur.</p>
             </div>
         </div>
     </section>
 
-    <section class="min-h-screen py-32 px-8 md:px-24 bg-black/20">
-        <div class="max-w-4xl">
-            <h2 class="magra-title text-inpulsionRose text-xs mb-4">Diagnosis : ZenWell</h2>
-            <h3 class="magra-title text-3xl md:text-5xl mb-12 reveal-up">Why your current Core is failing.</h3>
-            <p class="text-xl md:text-2xl font-light opacity-80 leading-relaxed reveal-up">
-                ZenWell's expansion is throttled by legacy architectures. Your Cloud infrastructure lacks the elasticity for global scaling, and your BI silos prevent real-time decision making. A surface-level fix isn't enough. You need a Re-Kore.
-            </p>
+    <div class="counter-box">
+        <div class="container">
+            <span class="number" id="count">0</span>
+            <p class="magra">structures déjà réalignées par manon, sarah & alyssa.</p>
         </div>
+    </div>
+
+    <section class="container section" style="text-align: center;">
+        <h2 class="reveal-text" style="font-size: 3rem;">on nous dit d'aller vite.<br>nous choisissons d'aller loin.</h2>
     </section>
 
-    <section class="py-32 px-8 md:px-24">
-        <h2 class="magra-title text-xs mb-16 opacity-50">Core Solutions</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-0">
-            <div class="service-card p-12 aspect-square flex flex-col justify-between reveal-up">
-                <span class="magra-title text-xs">01</span>
-                <div>
-                    <h4 class="magra-title text-2xl mb-4">Audit</h4>
-                    <p class="opacity-60 text-sm">Chirurgical analysis of your technical debt and workflows.</p>
-                </div>
-            </div>
-            <div class="service-card p-12 aspect-square flex flex-col justify-between reveal-up">
-                <span class="magra-title text-xs">02</span>
-                <div>
-                    <h4 class="magra-title text-2xl mb-4">Cloud</h4>
-                    <p class="opacity-60 text-sm">High-availability architectures engineered for 99.9% uptime.</p>
-                </div>
-            </div>
-            <div class="service-card p-12 aspect-square flex flex-col justify-between reveal-up">
-                <span class="magra-title text-xs">03</span>
-                <div>
-                    <h4 class="magra-title text-2xl mb-4">Software</h4>
-                    <p class="opacity-60 text-sm">Bespoke digital tools designed for operational excellence.</p>
-                </div>
-            </div>
-            <div class="service-card p-12 aspect-square flex flex-col justify-between reveal-up">
-                <span class="magra-title text-xs">04</span>
-                <div>
-                    <h4 class="magra-title text-2xl mb-4">BI</h4>
-                    <p class="opacity-60 text-sm">Turning raw data into predictive growth intelligence.</p>
-                </div>
-            </div>
-            <div class="service-card p-12 aspect-square flex flex-col justify-between reveal-up">
-                <span class="magra-title text-xs">05</span>
-                <div>
-                    <h4 class="magra-title text-2xl mb-4">UX</h4>
-                    <p class="opacity-60 text-sm">Frictionless interfaces for high-end digital experiences.</p>
-                </div>
-            </div>
-            <div class="service-card p-12 aspect-square flex flex-col justify-between reveal-up">
-                <span class="magra-title text-xs">06</span>
-                <div>
-                    <h4 class="magra-title text-2xl mb-4">Content</h4>
-                    <p class="opacity-60 text-sm">Strategic narratives that resonate with premium audiences.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-32 px-8 md:px-24 border-t border-white/5">
-        <h2 class="magra-title text-xs mb-16 text-center">Executive Partners</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div class="reveal-up text-center">
-                <div class="aspect-[3/4] bg-white/5 mb-6 grayscale hover:grayscale-0 transition-all duration-700"></div>
-                <h5 class="magra-title text-xl">Manon</h5>
-                <p class="opacity-50 text-xs mt-2 uppercase tracking-widest">Strategy</p>
-            </div>
-            <div class="reveal-up text-center" style="transition-delay: 0.2s;">
-                <div class="aspect-[3/4] bg-white/5 mb-6 grayscale hover:grayscale-0 transition-all duration-700"></div>
-                <h5 class="magra-title text-xl">Sarah</h5>
-                <p class="opacity-50 text-xs mt-2 uppercase tracking-widest">Technology</p>
-            </div>
-            <div class="reveal-up text-center" style="transition-delay: 0.4s;">
-                <div class="aspect-[3/4] bg-white/5 mb-6 grayscale hover:grayscale-0 transition-all duration-700"></div>
-                <h5 class="magra-title text-xl">Alyssa</h5>
-                <p class="opacity-50 text-xs mt-2 uppercase tracking-widest">Design</p>
-            </div>
-        </div>
-    </section>
-
-    <footer class="py-48 px-8 text-center bg-black/40">
-        <h2 class="magra-title text-4xl md:text-6xl mb-12 reveal-up">Ready to upgrade?</h2>
-        <a href="#" class="inline-block magra-title border border-inpulsionRose text-inpulsionRose px-16 py-6 text-sm cta-glow transition-all duration-500 reveal-up">
-            Audit Your Core
-        </a>
-        <p class="mt-24 magra-title text-[10px] opacity-30 tracking-[0.5em]">Kore Agency © 2026</p>
+    <footer>
+        <p>kore agency &copy; 2026 — visceral digital.</p>
     </footer>
 
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
-        // Hero Reveal
-        gsap.from(".hero-title", {
-            y: 200,
-            duration: 1.5,
+        // Animation d'entrée (Hero)
+        gsap.to(".reveal-text", {
+            opacity: 1,
+            y: 0,
+            duration: 1.2,
             ease: "power4.out",
-            delay: 0.5
+            stagger: 0.3
         });
 
-        gsap.from(".hero-cta", {
-            opacity: 0,
-            y: 30,
+        gsap.to(".sub-hero", {
+            opacity: 0.8,
             duration: 1,
-            delay: 1.2
+            delay: 0.8
         });
 
-        // Universal Scroll Reveal
-        const reveals = document.querySelectorAll('.reveal-up');
-        reveals.forEach((el) => {
-            gsap.to(el, {
-                scrollTrigger: {
-                    trigger: el,
-                    start: "top 85%",
-                    toggleActions: "play none none none"
-                },
-                y: 0,
-                opacity: 1,
-                duration: 1.2,
-                ease: "power3.out",
-                stagger: 0.2
-            });
-        });
-    </script>
-</body>
-</html>        }
-
-        .service-card {
-            border: 1px solid rgba(209, 209, 199, 0.3);
-            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
-        }
-
-        .service-card:hover {
-            border-color: var(--grege);
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .btn-pulse {
-            animation: pulse-border 2s infinite;
-        }
-
-        @keyframes pulse-border {
-            0% { box-shadow: 0 0 0 0 rgba(209, 209, 199, 0.4); }
-            70% { box-shadow: 0 0 0 15px rgba(209, 209, 199, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(209, 209, 199, 0); }
-        }
-
-        .parallax-text {
-            will-change: transform;
-        }
-    </style>
-</head>
-<body class="antialiased">
-    <div class="noise-overlay"></div>
-
-    <nav class="fixed top-0 w-full z-40 p-8 flex justify-between items-center bg-transparent">
-        <div class="w-32">
-            <img src="Logo 2.png" alt="Kore Agency" class="w-full h-auto opacity-90" onerror="this.onerror=null; this.insertAdjacentHTML('afterend', '<span class=\'font-magra text-white\'>KORE</span>'); this.remove();">
-        </div>
-        <div class="hidden md:flex space-x-12 font-magra text-[10px]">
-            <a href="#problem" class="hover:opacity-50 transition">The Problem</a>
-            <a href="#services" class="hover:opacity-50 transition">Solutions</a>
-            <a href="#team" class="hover:opacity-50 transition">Agency</a>
-            <a href="#contact" class="border border-white/30 px-6 py-2 hover:bg-white hover:text-black transition">Expert Audit</a>
-        </div>
-    </nav>
-
-    <section class="min-h-screen flex flex-col justify-center items-center px-6 pt-20 text-center">
-        <h1 class="font-magra text-5xl md:text-8xl mb-8 leading-tight parallax-text" data-aos="fade-up" data-aos-duration="1500">
-            RE-KORE YOUR<br>BUSINESS
-        </h1>
-        <p class="max-w-2xl text-lg md:text-xl opacity-80 mb-12" data-aos="fade-up" data-aos-delay="200">
-            L'ingénierie tech rencontre le branding de rupture.<br> 
-            Nous reconstruisons votre noyau digital.
-        </p>
-        
-        <div data-aos="fade-up" data-aos-delay="400">
-            <a href="#contact" class="font-magra bg-white text-black px-12 py-5 inline-block hover:bg-transparent hover:text-white border border-white transition-all duration-500 rounded-none btn-pulse">
-                Démarrer la Transformation
-            </a>
-        </div>
-
-        <div class="mt-24 w-full max-w-4xl opacity-40" data-aos="fade-in" data-aos-delay="600">
-            <div class="flex flex-wrap justify-between items-center gap-8 px-4 grayscale contrast-125">
-                <span class="font-magra text-sm">AMAN RESORTS</span>
-                <span class="font-magra text-sm">TECH-X</span>
-                <span class="font-magra text-sm">LVMH LAB</span>
-                <span class="font-magra text-sm">WELLNESS CO.</span>
-                <span class="font-magra text-sm">NEO-STRIKE</span>
-            </div>
-        </div>
-    </section>
-
-    <section id="problem" class="py-32 bg-black/40 backdrop-blur-sm border-y border-white/5 px-6">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center">
-            <div data-aos="fade-right">
-                <h2 class="font-magra text-3xl mb-8">L'obsolescence est<br>votre plus gros risque.</h2>
-                <div class="space-y-6 text-white/60 text-lg">
-                    <p>Vos systèmes actuels sont des ancres. Cloud fragmenté, data inexploitée, interface sans émotion : vous perdez du terrain sur le luxe de demain.</p>
-                    <p>Le marché ne pardonne plus la friction digitale.</p>
-                </div>
-            </div>
-            <div class="grid grid-cols-2 gap-4" data-aos="zoom-in-up">
-                <div class="h-64 border border-white/10 flex items-center justify-center p-8 text-center">
-                    <span class="font-magra text-xs opacity-50">Cloud Silos</span>
-                </div>
-                <div class="h-64 border border-white/10 flex items-center justify-center p-8 text-center mt-12">
-                    <span class="font-magra text-xs opacity-50">UX Friction</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="services" class="py-32 px-6">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="font-magra text-center text-4xl mb-24" data-aos="fade-down">Engineering & Design</h2>
-            <div class="grid md:grid-cols-3 gap-0">
-                <div class="service-card p-12 flex flex-col h-[400px]" data-aos="fade-up" data-aos-delay="100">
-                    <span class="font-magra text-xs mb-auto opacity-40">01 / Audit</span>
-                    <h3 class="font-magra text-xl mb-4">Diagnostic Systémique</h3>
-                    <p class="text-sm text-white/60 leading-relaxed">Analyse profonde de votre stack technique et de votre positionnement de marque.</p>
-                </div>
-                <div class="service-card p-12 flex flex-col h-[400px]" data-aos="fade-up" data-aos-delay="200">
-                    <span class="font-magra text-xs mb-auto opacity-40">02 / Cloud</span>
-                    <h3 class="font-magra text-xl mb-4">Architecture Cloud</h3>
-                    <p class="text-sm text-white/60 leading-relaxed">Infrastructure scalable, sécurisée et optimisée pour la haute performance.</p>
-                </div>
-                <div class="service-card p-12 flex flex-col h-[400px]" data-aos="fade-up" data-aos-delay="300">
-                    <span class="font-magra text-xs mb-auto opacity-40">03 / Logiciel & IA</span>
-                    <h3 class="font-magra text-xl mb-4">Intelligence Appliquée</h3>
-                    <p class="text-sm text-white/60 leading-relaxed">Développement de solutions propriétaires intégrant l'IA générative.</p>
-                </div>
-                <div class="service-card p-12 flex flex-col h-[400px]" data-aos="fade-up" data-aos-delay="400">
-                    <span class="font-magra text-xs mb-auto opacity-40">04 / BI & Data</span>
-                    <h3 class="font-magra text-xl mb-4">Analytics Avancée</h3>
-                    <p class="text-sm text-white/60 leading-relaxed">Transformer vos données brutes en actifs stratégiques de décision.</p>
-                </div>
-                <div class="service-card p-12 flex flex-col h-[400px]" data-aos="fade-up" data-aos-delay="500">
-                    <span class="font-magra text-xs mb-auto opacity-40">05 / UI/UX</span>
-                    <h3 class="font-magra text-xl mb-4">Expérience de Luxe</h3>
-                    <p class="text-sm text-white/60 leading-relaxed">Interfaces minimalistes et épurées conçues pour la conversion émotionnelle.</p>
-                </div>
-                <div class="service-card p-12 flex flex-col h-[400px]" data-aos="fade-up" data-aos-delay="600">
-                    <span class="font-magra text-xs mb-auto opacity-40">06 / Contenu</span>
-                    <h3 class="font-magra text-xl mb-4">Branding & Contenu</h3>
-                    <p class="text-sm text-white/60 leading-relaxed">Narration visuelle et textuelle pour imposer votre autorité sur le marché.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="team" class="py-32 px-6 bg-white/5">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="font-magra text-4xl mb-20">The Architects</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="group" data-aos="fade-up">
-                    <div class="aspect-[3/4] bg-neutral-800 border border-white/10 grayscale group-hover:grayscale-0 transition-all duration-700 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                    </div>
-                    <h4 class="font-magra mt-6 text-lg">Manon</h4>
-                    <p class="text-xs font-magra opacity-50">Strategy & BI Lead</p>
-                </div>
-                <div class="group" data-aos="fade-up" data-aos-delay="200">
-                    <div class="aspect-[3/4] bg-neutral-800 border border-white/10 grayscale group-hover:grayscale-0 transition-all duration-700 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                    </div>
-                    <h4 class="font-magra mt-6 text-lg">Sarah</h4>
-                    <p class="text-xs font-magra opacity-50">Tech & Cloud Architect</p>
-                </div>
-                <div class="group" data-aos="fade-up" data-aos-delay="400">
-                    <div class="aspect-[3/4] bg-neutral-800 border border-white/10 grayscale group-hover:grayscale-0 transition-all duration-700 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                    </div>
-                    <h4 class="font-magra mt-6 text-lg">Alyssa</h4>
-                    <p class="text-xs font-magra opacity-50">Creative & Content Director</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="py-40 text-center px-6">
-        <div class="max-w-3xl mx-auto" data-aos="zoom-in">
-            <h2 class="font-magra text-4xl md:text-6xl mb-12">Prêt pour la reconstruction ?</h2>
-            <p class="mb-12 text-lg opacity-70">Réservez un audit confidentiel de 30 minutes avec nos leads.</p>
-            <button class="font-magra border border-white px-16 py-6 text-xl hover:bg-white hover:text-black transition-all duration-500 rounded-none btn-pulse">
-                Réserver l'Audit
-            </button>
-        </div>
-    </section>
-
-    <footer class="p-12 border-t border-white/5 text-[10px] font-magra opacity-40 flex justify-between">
-        <span>© 2026 KORE AGENCY</span>
-        <div class="space-x-8">
-            <a href="#">Privacy</a>
-            <a href="#">Terms</a>
-            <a href="#">LinkedIn</a>
-        </div>
-    </footer>
-
-    <script>
-        // Initialisation AOS
-        AOS.init({
-            duration: 1000,
-            once: true,
-            offset: 100
+        // Animation des cartes au scroll (Style Olyn)
+        gsap.from(".card", {
+            scrollTrigger: {
+                trigger: ".grid-services",
+                start: "top 80%",
+            },
+            y: 60,
+            opacity: 0,
+            duration: 1,
+            stagger: 0.2,
+            ease: "expo.out"
         });
 
-        // Effet de parallaxe léger au scroll
-        window.addEventListener('scroll', function() {
-            const parallax = document.querySelectorAll('.parallax-text');
-            let scroll = window.pageYOffset;
-            parallax.forEach(el => {
-                let speed = 0.4;
-                el.style.transform = `translateY(${scroll * speed}px)`;
-            });
+        // Compteur animé
+        gsap.to("#count", {
+            innerText: 40,
+            duration: 3,
+            snap: { innerText: 1 },
+            scrollTrigger: {
+                trigger: ".counter-box",
+                start: "top 90%"
+            }
         });
     </script>
 </body>

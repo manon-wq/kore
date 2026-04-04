@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>kore agency | digital transformation from the inside out</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Magra:wght@400;700&family=Overlock:wght@400;700&display=swap" rel="stylesheet">
+    <title>kore | re-kore your business</title>
+    <link href="https://fonts.googleapis.com/css2?family=Magra:wght@400&family=Overlock:wght@400&display=swap" rel="stylesheet">
     <style>
         :root {
             --encre: #142030;
@@ -21,20 +19,296 @@
             padding: 0;
             box-sizing: border-box;
             text-transform: lowercase;
+            -webkit-font-smoothing: antialiased;
         }
 
         body {
-            background: linear-gradient(135deg, var(--encre) 0%, var(--prunelle) 100%);
-            background-attachment: fixed;
+            background: linear-gradient(180deg, var(--encre) 0%, var(--prunelle) 100%);
             color: var(--ether);
             font-family: 'Overlock', cursive;
-            line-height: 1.6;
+            font-weight: 400;
+            line-height: 1.7;
             overflow-x: hidden;
         }
 
-        h1, h2, h3, .magra {
+        h1, h2, h3 {
             font-family: 'Magra', sans-serif;
-            font-weight: 700;
+            font-weight: 400; /* Strictement regular */
+            letter-spacing: -0.02em;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid rgba(182, 199, 216, 0.05);
+        }
+
+        .logo-kore {
+            height: 50px;
+            opacity: 0.9;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-bottom: 100px;
+        }
+
+        .urgency {
+            color: var(--impulsion);
+            font-size: 0.8rem;
+            letter-spacing: 4px;
+            margin-bottom: 30px;
+            font-family: 'Magra', sans-serif;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.2;
+            max-width: 900px;
+            margin-bottom: 30px;
+            color: var(--ether);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            color: var(--grege);
+            margin-bottom: 50px;
+            opacity: 0.8;
+        }
+
+        /* --- CTA Stylisé --- */
+        .cta-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .btn-kore {
+            position: relative;
+            padding: 20px 50px;
+            color: var(--ether);
+            text-decoration: none;
+            border: 1px solid var(--impulsion);
+            border-radius: 2px; /* Carré/Moderne */
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            background: transparent;
+            font-family: 'Magra', sans-serif;
+            overflow: hidden;
+        }
+
+        .btn-kore:hover {
+            background: var(--impulsion);
+            color: var(--encre);
+            box-shadow: 0 0 30px rgba(255, 91, 142, 0.4);
+        }
+
+        .proof {
+            font-size: 0.75rem;
+            color: var(--ether);
+            opacity: 0.5;
+            letter-spacing: 1px;
+        }
+
+        /* --- Section Manifeste --- */
+        .manifesto-section {
+            padding: 150px 0;
+            border-top: 1px solid rgba(182, 199, 216, 0.05);
+        }
+
+        .manifesto-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 100px;
+            align-items: start;
+        }
+
+        .manifesto-text {
+            font-size: 1.4rem;
+            line-height: 1.8;
+            color: var(--grege);
+        }
+
+        .manifesto-highlight {
+            font-size: 2.2rem;
+            color: var(--ether);
+            font-family: 'Magra', sans-serif;
+            border-left: 1px solid var(--impulsion);
+            padding-left: 40px;
+        }
+
+        /* --- Services Grid --- */
+        .services-section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            margin-bottom: 80px;
+            font-size: 0.8rem;
+            letter-spacing: 5px;
+            color: var(--impulsion);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: rgba(182, 199, 216, 0.1); /* Lignes de grille fines */
+        }
+
+        .service-card {
+            background: var(--encre);
+            padding: 60px 40px;
+            transition: background 0.5s ease;
+        }
+
+        .service-card:hover {
+            background: rgba(116, 39, 85, 0.3);
+        }
+
+        .service-card h3 {
+            margin-bottom: 20px;
+            color: var(--grege);
+        }
+
+        /* --- Team --- */
+        .team-section {
+            padding: 150px 0;
+            text-align: center;
+        }
+
+        .team-flex {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 100px;
+        }
+
+        .member h3 {
+            margin-top: 30px;
+            font-size: 1.5rem;
+        }
+
+        .member p {
+            color: var(--impulsion);
+            font-size: 0.9rem;
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 100px 0 50px;
+            text-align: center;
+            border-top: 1px solid rgba(182, 199, 216, 0.05);
+        }
+
+        .footer-logo { height: 30px; margin-bottom: 40px; opacity: 0.5; }
+
+        @media (max-width: 900px) {
+            .manifesto-grid, .services-grid { grid-template-columns: 1fr; }
+            .team-flex { flex-direction: column; gap: 60px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <img src="Logo 2.png" alt="kore" class="logo-kore">
+    </nav>
+
+    <section class="container hero">
+        <span class="urgency">l’obsolescence n'attend pas.</span>
+        <h1>digital transformation from the inside out.</h1>
+        <p>nous ne sommes pas là pour ajouter une couche de vernis sur des structures obsolètes. nous extrayons la substance brute.</p>
+        
+        <div class="cta-container">
+            <a href="#" class="btn-kore">re-kore your business</a>
+            <span class="proof">+40 structures propulsées dans le futur</span>
+        </div>
+    </section>
+
+    <section class="manifesto-section">
+        <div class="container manifesto-grid">
+            <div class="manifesto-text">
+                le monde sature. trop de bruit, trop de flux, trop d’interfaces sans âme. le digital a perdu son noyau. sa raison d'être. 
+                <br><br>
+                nous choisissons d'aller loin, en partant du centre.
+            </div>
+            <div class="manifesto-highlight">
+                on nous dit que le digital est virtuel.<br>nous prouvons qu'il est viscéral.
+            </div>
+        </div>
+    </section>
+
+    <section class="container services-section">
+        <span class="section-title">expertises</span>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>audit & stratégie</h3>
+                <p>re-définir la trajectoire de votre noyau business.</p>
+            </div>
+            <div class="service-card">
+                <h3>architecture cloud</h3>
+                <p>bâtir des fondations invisibles mais indestructibles.</p>
+            </div>
+            <div class="service-card">
+                <h3>ingénierie logicielle</h3>
+                <p>automatiser pour libérer la substance humaine.</p>
+            </div>
+            <div class="service-card">
+                <h3>bi & data analytics</h3>
+                <p>donner une voix aux flux de données.</p>
+            </div>
+            <div class="service-card">
+                <h3>ux/ui design</h3>
+                <p>créer des interfaces qui ont un battement de cœur.</p>
+            </div>
+            <div class="service-card">
+                <h3>branding</h3>
+                <p>incarner votre potentiel dans chaque pixel.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container team-section">
+        <span class="section-title">curatrices de potentiel</span>
+        <div class="team-flex">
+            <div class="member">
+                <h3>manon</h3>
+                <p>vision & stratégie</p>
+            </div>
+            <div class="member">
+                <h3>sarah</h3>
+                <p>architecture & innovation</p>
+            </div>
+            <div class="member">
+                <h3>alyssa</h3>
+                <p>design & expérience</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <img src="Logo 2.png" alt="kore" class="footer-logo">
+        <p style="opacity: 0.4; font-size: 0.8rem;">&copy; 2026 kore agency. from the inside out.</p>
+    </footer>
+
+</body>
+</html>            font-weight: 700;
         }
 
         .container {

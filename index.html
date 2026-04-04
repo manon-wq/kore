@@ -1,40 +1,334 @@
 <!DOCTYPE html>
-<html lang="fr" class="scroll-smooth">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kore | Re-Kore Your Business</title>
+    <title>kore agency | digital transformation from the inside out</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Magra:wght@400;700&family=Overlock:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        encreNocturne: '#142030',
-                        prunelleVision: '#742755',
-                        inpulsionRose: '#FF5B8E',
-                    },
-                    fontFamily: {
-                        magra: ['Magra', 'sans-serif'],
-                        overlock: ['Overlock', 'sans-serif'],
-                    },
-                    letterSpacing: {
-                        ultra: '0.15em',
-                    }
-                }
-            }
-        }
-    </script>
-
     <style>
+        :root {
+            --encre: #142030;
+            --grege: #EAD9C8;
+            --prunelle: #742755;
+            --impulsion: #FF5B8E;
+            --ether: #B6C7D8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-transform: lowercase;
+        }
+
         body {
-            background: linear-gradient(180deg, #142030 0%, #742755 100%);
+            background: linear-gradient(135deg, var(--encre) 0%, var(--prunelle) 100%);
             background-attachment: fixed;
-            color: #ffffff;
+            color: var(--ether);
+            font-family: 'Overlock', cursive;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .magra {
+            font-family: 'Magra', sans-serif;
+            font-weight: 700;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* --- Header / Nav --- */
+        nav {
+            padding: 30px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-main {
+            height: 80px;
+            filter: drop-shadow(0 0 10px rgba(182, 199, 216, 0.2));
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            padding: 80px 0 120px;
+            text-align: center;
+        }
+
+        .urgency-badge {
+            color: var(--impulsion);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: 25px;
+            color: var(--ether);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--impulsion);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: 'Magra', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 91, 142, 0.3);
+        }
+
+        .social-proof {
+            margin-top: 30px;
+            font-size: 0.85rem;
+            color: var(--grege);
+            opacity: 0.8;
+        }
+
+        /* --- Manifeste --- */
+        .manifesto {
+            padding: 100px 0;
+            background: rgba(20, 32, 48, 0.4);
+            text-align: center;
+            border-top: 1px solid rgba(182, 199, 216, 0.1);
+            border-bottom: 1px solid rgba(182, 199, 216, 0.1);
+        }
+
+        .manifesto blockquote {
+            font-size: 1.6rem;
+            max-width: 850px;
+            margin: 0 auto 40px;
+            font-style: italic;
+        }
+
+        /* --- Pillars --- */
+        .pillars {
+            padding: 100px 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .pillar-card {
+            padding: 40px;
+            border: 1px solid rgba(182, 199, 216, 0.1);
+            border-radius: 20px;
+            transition: background 0.4s ease;
+        }
+
+        .pillar-card:hover {
+            background: rgba(182, 199, 216, 0.05);
+        }
+
+        .pillar-card h3 {
+            color: var(--impulsion);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* --- Services --- */
+        .services {
+            padding: 100px 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        .service-item {
+            padding: 30px;
+            background: rgba(116, 39, 85, 0.2);
+            border-radius: 10px;
+            font-family: 'Magra', sans-serif;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .service-item::before {
+            content: '→';
+            margin-right: 15px;
+            color: var(--impulsion);
+        }
+
+        /* --- Team --- */
+        .team {
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .team-grid {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            margin-top: 60px;
+        }
+
+        .member {
+            flex: 1;
+            min-width: 200px;
+            max-width: 300px;
+        }
+
+        .member-img {
+            width: 150px;
+            height: 150px;
+            background: var(--grege);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            filter: grayscale(1);
+            transition: filter 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--encre);
+        }
+
+        .member:hover .member-img {
+            filter: grayscale(0);
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 120px 0 60px;
+            text-align: center;
+        }
+
+        .footer-cta h2 {
+            font-size: 3rem;
+            margin-bottom: 40px;
+            color: var(--grege);
+        }
+
+        .footer-bottom {
+            margin-top: 80px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(182, 199, 216, 0.1);
+            font-size: 0.8rem;
+            color: rgba(182, 199, 216, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .team-grid { gap: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <img src="Logo 2.png" alt="kore agency logo" class="logo-main">
+    </nav>
+
+    <header class="container hero">
+        <span class="urgency-badge">l’obsolescence n'attend pas.</span>
+        <h1>digital transformation from the inside out.</h1>
+        <p>re-kore your business. ne vous contentez plus d'une couche de vernis. nous extrayons votre substance brute pour bâtir un futur viscéral.</p>
+        <a href="#contact" class="btn-primary">extraire votre potentiel maintenant</a>
+        <p class="social-proof">+40 structures réalignées cette année. ils nous font confiance.</p>
+    </header>
+
+    <section class="manifesto">
+        <div class="container">
+            <blockquote>
+                "le monde sature. trop de bruit, trop de flux, trop d’interfaces sans âme. dans cette accélération, le digital a perdu son kore. son noyau. sa raison d'être."
+            </blockquote>
+            <h2 class="magra">nous ne sommes pas une agence cosmétique. <br>nous sommes des curateurs de potentiel.</h2>
+        </div>
+    </section>
+
+    <section class="container pillars">
+        <div class="pillar-card">
+            <h3>core values</h3>
+            <p>parce que sans valeurs réelles, la technologie est vide. l'éthique comme moteur de performance.</p>
+        </div>
+        <div class="pillar-card">
+            <h3>core tech</h3>
+            <p>parce que l'innovation doit être solide, pas seulement brillante. des architectures robustes pour durer.</p>
+        </div>
+        <div class="pillar-card">
+            <h3>core human</h3>
+            <p>parce que derrière chaque pixel, il y a un battement de cœur. l'humain au centre de l'expérience.</p>
+        </div>
+    </section>
+
+    <section class="container services">
+        <h2 style="text-align:center;">nos expertises</h2>
+        <div class="services-grid">
+            <div class="service-item">audit et stratégie digitale</div>
+            <div class="service-item">architecture cloud</div>
+            <div class="service-item">ingénierie logicielle et automatisation</div>
+            <div class="service-item">bi et data analytics</div>
+            <div class="service-item">ux/ui</div>
+            <div class="service-item">branding et création de contenus</div>
+        </div>
+    </section>
+
+    <section class="container team">
+        <h2>curatrices de potentiel</h2>
+        <div class="team-grid">
+            <div class="member">
+                <div class="member-img">m</div>
+                <h3 class="magra">manon</h3>
+                <p>vision et stratégie</p>
+            </div>
+            <div class="member">
+                <div class="member-img">s</div>
+                <h3 class="magra">sarah</h3>
+                <p>architecture et innovation</p>
+            </div>
+            <div class="member">
+                <div class="member-img">a</div>
+                <h3 class="magra">alyssa</h3>
+                <p>design et expérience</p>
+            </div>
+        </div>
+        <p style="margin-top: 40px; color: var(--grege);">trois expertes, une méthode unique : aller chercher le centre pour aller plus loin.</p>
+    </section>
+
+    <footer id="contact">
+        <div class="container footer-cta">
+            <h2>votre transformation commence au noyau.</h2>
+            <a href="mailto:contact@kore.agency" class="btn-primary">contactez manon, sarah et alyssa</a>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 kore agency. on nous dit d'aller vite. nous choisissons d'aller loin.</p>
+        </div>
+    </footer>
+
+</body>
+</html>            color: #ffffff;
             font-family: 'Overlock', sans-serif;
             overflow-x: hidden;
         }

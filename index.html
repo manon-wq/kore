@@ -3,419 +3,228 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KORE | Digital Transformation Agency</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Magra:wght@400&family=Overlock:wght@400&display=swap" rel="stylesheet">
+    <title>KORE Agency | Re-Kore Your Business</title>
+    <link href="https://fonts.googleapis.com/css2?family=Magra&family=Overlock&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
     <style>
         :root {
-            --encre: #142030;
-            --prunelle: #742755;
-            --rose: #FF5B8E;
-            --grege: #EAD9C8;
+            --encre-nocturne: #142030;
+            --prunelle-vision: #742755;
+            --grege: #D1D1C7;
         }
 
         body {
-            font-family: 'Overlock', sans-serif;
-            background: linear-gradient(180deg, var(--encre) 0%, var(--prunelle) 100%);
-            color: var(--grege);
+            background: linear-gradient(135deg, var(--encre-nocturne) 0%, var(--prunelle-vision) 100%);
             background-attachment: fixed;
+            color: #FFFFFF;
+            font-family: 'Overlock', sans-serif;
+            overflow-x: hidden;
         }
 
-        h1, h2, h3, h4, .font-magra {
-            font-family: 'Magra', sans-serif;
-            font-weight: 400 !important; /* Strict Regular */
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        .border-kore { border: 1px solid rgba(234, 217, 200, 0.2); }
+        .font-magra { font-family: 'Magra', sans-serif; text-transform: uppercase; letter-spacing: 0.25em; }
         
-        .cta-glow {
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .cta-glow:hover {
-            box-shadow: 0 0 30px rgba(255, 91, 142, 0.4);
-            border-color: var(--rose);
-            color: var(--rose);
+        /* Grain Texture Overlay */
+        .noise-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            opacity: 0.04;
+            z-index: 50;
+            background-image: url('https://grainy-gradients.vercel.app/noise.svg');
         }
 
-        .grain {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: url('https://grainy-gradients.vercel.app/noise.svg');
-            opacity: 0.04; pointer-events: none; z-index: 99;
+        .service-card {
+            border: 1px solid rgba(209, 209, 199, 0.3);
+            transition: all 0.5s cubic-bezier(0.19, 1, 0.22, 1);
         }
 
-        /* Masquer la scrollbar */
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: var(--encre); }
-        ::-webkit-scrollbar-thumb { background: var(--prunelle); }
+        .service-card:hover {
+            border-color: var(--grege);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .btn-pulse {
+            animation: pulse-border 2s infinite;
+        }
+
+        @keyframes pulse-border {
+            0% { box-shadow: 0 0 0 0 rgba(209, 209, 199, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(209, 209, 199, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(209, 209, 199, 0); }
+        }
+
+        .parallax-text {
+            will-change: transform;
+        }
     </style>
 </head>
-<body>
-    <div class="grain"></div>
+<body class="antialiased">
+    <div class="noise-overlay"></div>
 
-    <nav class="fixed w-full z-50 mix-blend-difference px-8 py-6 flex justify-between items-center">
-        <div class="text-xl font-magra tracking-[0.3em]">KORE</div>
-        <div class="hidden md:flex space-x-12 text-[10px] tracking-[0.2em] uppercase">
-            <a href="#expertise" class="hover:text-[#FF5B8E] transition">Solutions</a>
-            <a href="#agency" class="hover:text-[#FF5B8E] transition">L'Agence</a>
-            <a href="#contact" class="border-kore px-6 py-2 hover:bg-white hover:text-black transition">Audit Gratuit</a>
+    <nav class="fixed top-0 w-full z-40 p-8 flex justify-between items-center bg-transparent">
+        <div class="w-32">
+            <img src="Logo 2.png" alt="Kore Agency" class="w-full h-auto opacity-90" onerror="this.onerror=null; this.insertAdjacentHTML('afterend', '<span class=\'font-magra text-white\'>KORE</span>'); this.remove();">
+        </div>
+        <div class="hidden md:flex space-x-12 font-magra text-[10px]">
+            <a href="#problem" class="hover:opacity-50 transition">The Problem</a>
+            <a href="#services" class="hover:opacity-50 transition">Solutions</a>
+            <a href="#team" class="hover:opacity-50 transition">Agency</a>
+            <a href="#contact" class="border border-white/30 px-6 py-2 hover:bg-white hover:text-black transition">Expert Audit</a>
         </div>
     </nav>
 
-    <section class="relative min-h-screen flex flex-col justify-center px-8 md:px-24 pt-20">
-        <div data-aos="fade-up" data-aos-duration="1500">
-            <div class="flex items-center space-x-4 mb-6 opacity-60">
-                <span class="h-[1px] w-12 bg-white"></span>
-                <p class="text-[10px] tracking-[0.4em] uppercase">Architecture & Branding de rupture</p>
+    <section class="min-h-screen flex flex-col justify-center items-center px-6 pt-20 text-center">
+        <h1 class="font-magra text-5xl md:text-8xl mb-8 leading-tight parallax-text" data-aos="fade-up" data-aos-duration="1500">
+            RE-KORE YOUR<br>BUSINESS
+        </h1>
+        <p class="max-w-2xl text-lg md:text-xl opacity-80 mb-12" data-aos="fade-up" data-aos-delay="200">
+            L'ingénierie tech rencontre le branding de rupture.<br> 
+            Nous reconstruisons votre noyau digital.
+        </p>
+        
+        <div data-aos="fade-up" data-aos-delay="400">
+            <a href="#contact" class="font-magra bg-white text-black px-12 py-5 inline-block hover:bg-transparent hover:text-white border border-white transition-all duration-500 rounded-none btn-pulse">
+                Démarrer la Transformation
+            </a>
+        </div>
+
+        <div class="mt-24 w-full max-w-4xl opacity-40" data-aos="fade-in" data-aos-delay="600">
+            <div class="flex flex-wrap justify-between items-center gap-8 px-4 grayscale contrast-125">
+                <span class="font-magra text-sm">AMAN RESORTS</span>
+                <span class="font-magra text-sm">TECH-X</span>
+                <span class="font-magra text-sm">LVMH LAB</span>
+                <span class="font-magra text-sm">WELLNESS CO.</span>
+                <span class="font-magra text-sm">NEO-STRIKE</span>
             </div>
-            <h1 class="text-6xl md:text-[10vw] leading-[0.9] mb-12">
-                RECONSTRUIRE<br>VOTRE CORE.
-            </h1>
-            <div class="grid md:grid-cols-2 gap-12 items-end">
-                <p class="text-lg md:text-xl opacity-70 leading-relaxed max-w-md">
-                    Nous ne faisons pas que du design. Nous forgeons l'infrastructure technique et l'identité visuelle qui propulsent les leaders comme ZenWell dans l'ère du digital natif.
-                </p>
-                <div class="flex flex-col space-y-6">
-                    <a href="#contact" class="cta-glow border-kore w-fit px-12 py-5 text-sm font-magra tracking-widest bg-white text-black hover:bg-transparent">
-                        COMMENCER LA TRANSFORMATION
-                    </a>
-                    <p class="text-[10px] opacity-40 tracking-widest uppercase">Expertise Cloud, BI, IA & Contenu</p>
+        </div>
+    </section>
+
+    <section id="problem" class="py-32 bg-black/40 backdrop-blur-sm border-y border-white/5 px-6">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+            <div data-aos="fade-right">
+                <h2 class="font-magra text-3xl mb-8">L'obsolescence est<br>votre plus gros risque.</h2>
+                <div class="space-y-6 text-white/60 text-lg">
+                    <p>Vos systèmes actuels sont des ancres. Cloud fragmenté, data inexploitée, interface sans émotion : vous perdez du terrain sur le luxe de demain.</p>
+                    <p>Le marché ne pardonne plus la friction digitale.</p>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4" data-aos="zoom-in-up">
+                <div class="h-64 border border-white/10 flex items-center justify-center p-8 text-center">
+                    <span class="font-magra text-xs opacity-50">Cloud Silos</span>
+                </div>
+                <div class="h-64 border border-white/10 flex items-center justify-center p-8 text-center mt-12">
+                    <span class="font-magra text-xs opacity-50">UX Friction</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="expertise" class="py-32 px-8 md:px-24">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-0 border-kore">
-            <div class="p-12 border-kore group hover:bg-[#FF5B8E]/5 transition-colors" data-aos="fade-up">
-                <p class="text-[10px] text-[#FF5B8E] mb-8">01 / STRATÉGIE</p>
-                <h3 class="text-2xl mb-6">Repositionnement</h3>
-                <p class="opacity-60 text-sm leading-relaxed mb-8 text-justify">
-                    Audit profond de l'écosystème ZenWell. Nous redéfinissons votre ADN pour capturer l'audience Gen Z et créer une préférence de marque absolue.
-                </p>
-            </div>
-            <div class="p-12 border-kore group hover:bg-[#FF5B8E]/5 transition-colors" data-aos="fade-up" data-aos-delay="100">
-                <p class="text-[10px] text-[#FF5B8E] mb-8">02 / TECH</p>
-                <h3 class="text-2xl mb-6">Cloud & Architecture</h3>
-                <p class="opacity-60 text-sm leading-relaxed mb-8 text-justify">
-                    Migration vers des infrastructures Cloud scalables. Sécurisation critique et fluidité totale des flux de données membres.
-                </p>
-            </div>
-            <div class="p-12 border-kore group hover:bg-[#FF5B8E]/5 transition-colors" data-aos="fade-up" data-aos-delay="200">
-                <p class="text-[10px] text-[#FF5B8E] mb-8">03 / DATA</p>
-                <h3 class="text-2xl mb-6">BI & BIODASHBOARDS</h3>
-                <p class="opacity-60 text-sm leading-relaxed mb-8 text-justify">
-                    Transformation de la data en levier de croissance. Tableaux de bord prédictifs pour piloter votre rentabilité en temps réel.
-                </p>
-            </div>
-            <div class="p-12 border-kore group hover:bg-[#FF5B8E]/5 transition-colors" data-aos="fade-up">
-                <p class="text-[10px] text-[#FF5B8E] mb-8">04 / AUTOMATION</p>
-                <h3 class="text-2xl mb-6">Workflows IA</h3>
-                <p class="opacity-60 text-sm leading-relaxed mb-8 text-justify">
-                    Automatisation des processus opérationnels de vos salles. Gagnez en efficience grâce aux outils IA et No-code de pointe.
-                </p>
-            </div>
-            <div class="p-12 border-kore group hover:bg-[#FF5B8E]/5 transition-colors" data-aos="fade-up" data-aos-delay="100">
-                <p class="text-[10px] text-[#FF5B8E] mb-8">05 / DESIGN</p>
-                <h3 class="text-2xl mb-6">Système Immersif</h3>
-                <p class="opacity-60 text-sm leading-relaxed mb-8 text-justify">
-                    Design System unifié pour ZenWell. Une expérience utilisateur sans couture, de l'application mobile aux interfaces de gestion.
-                </p>
-            </div>
-            <div class="p-12 border-kore group hover:bg-[#FF5B8E]/5 transition-colors" data-aos="fade-up" data-aos-delay="200">
-                <p class="text-[10px] text-[#FF5B8E] mb-8">06 / CONTENT</p>
-                <h3 class="text-2xl mb-6">Social Assets</h3>
-                <p class="opacity-60 text-sm leading-relaxed mb-8 text-justify">
-                    Production de contenus verticaux haute fidélité. Storytelling de marque pensé pour l'engagement et la conversion sociale.
-                </p>
+    <section id="services" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="font-magra text-center text-4xl mb-24" data-aos="fade-down">Engineering & Design</h2>
+            <div class="grid md:grid-cols-3 gap-0">
+                <div class="service-card p-12 flex flex-col h-[400px]" data-aos="fade-up" data-aos-delay="100">
+                    <span class="font-magra text-xs mb-auto opacity-40">01 / Audit</span>
+                    <h3 class="font-magra text-xl mb-4">Diagnostic Systémique</h3>
+                    <p class="text-sm text-white/60 leading-relaxed">Analyse profonde de votre stack technique et de votre positionnement de marque.</p>
+                </div>
+                <div class="service-card p-12 flex flex-col h-[400px]" data-aos="fade-up" data-aos-delay="200">
+                    <span class="font-magra text-xs mb-auto opacity-40">02 / Cloud</span>
+                    <h3 class="font-magra text-xl mb-4">Architecture Cloud</h3>
+                    <p class="text-sm text-white/60 leading-relaxed">Infrastructure scalable, sécurisée et optimisée pour la haute performance.</p>
+                </div>
+                <div class="service-card p-12 flex flex-col h-[400px]" data-aos="fade-up" data-aos-delay="300">
+                    <span class="font-magra text-xs mb-auto opacity-40">03 / Logiciel & IA</span>
+                    <h3 class="font-magra text-xl mb-4">Intelligence Appliquée</h3>
+                    <p class="text-sm text-white/60 leading-relaxed">Développement de solutions propriétaires intégrant l'IA générative.</p>
+                </div>
+                <div class="service-card p-12 flex flex-col h-[400px]" data-aos="fade-up" data-aos-delay="400">
+                    <span class="font-magra text-xs mb-auto opacity-40">04 / BI & Data</span>
+                    <h3 class="font-magra text-xl mb-4">Analytics Avancée</h3>
+                    <p class="text-sm text-white/60 leading-relaxed">Transformer vos données brutes en actifs stratégiques de décision.</p>
+                </div>
+                <div class="service-card p-12 flex flex-col h-[400px]" data-aos="fade-up" data-aos-delay="500">
+                    <span class="font-magra text-xs mb-auto opacity-40">05 / UI/UX</span>
+                    <h3 class="font-magra text-xl mb-4">Expérience de Luxe</h3>
+                    <p class="text-sm text-white/60 leading-relaxed">Interfaces minimalistes et épurées conçues pour la conversion émotionnelle.</p>
+                </div>
+                <div class="service-card p-12 flex flex-col h-[400px]" data-aos="fade-up" data-aos-delay="600">
+                    <span class="font-magra text-xs mb-auto opacity-40">06 / Contenu</span>
+                    <h3 class="font-magra text-xl mb-4">Branding & Contenu</h3>
+                    <p class="text-sm text-white/60 leading-relaxed">Narration visuelle et textuelle pour imposer votre autorité sur le marché.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <section id="agency" class="py-32 px-8 md:px-24">
-        <h2 class="text-4xl mb-24 text-center">LES ESPRITS DERRIÈRE KORE</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-1px bg-[#EAD9C8]/20 border-kore">
-            <div class="bg-transparent p-12 text-center" data-aos="fade-up">
-                <div class="aspect-[3/4] bg-[#142030] mb-8 border-kore grayscale hover:grayscale-0 transition-all duration-700 overflow-hidden">
-                    <div class="w-full h-full flex items-center justify-center opacity-20 text-[10px] uppercase">Alyssa / Creative</div>
+    <section id="team" class="py-32 px-6 bg-white/5">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="font-magra text-4xl mb-20">The Architects</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="group" data-aos="fade-up">
+                    <div class="aspect-[3/4] bg-neutral-800 border border-white/10 grayscale group-hover:grayscale-0 transition-all duration-700 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <h4 class="font-magra mt-6 text-lg">Manon</h4>
+                    <p class="text-xs font-magra opacity-50">Strategy & BI Lead</p>
                 </div>
-                <h4 class="text-xl mb-2 tracking-widest">Alyssa</h4>
-                <p class="text-[10px] uppercase text-[#FF5B8E] tracking-[0.3em]">Direction Artistique & Contenu</p>
-            </div>
-            <div class="bg-transparent p-12 text-center" data-aos="fade-up" data-aos-delay="100">
-                <div class="aspect-[3/4] bg-[#142030] mb-8 border-kore grayscale hover:grayscale-0 transition-all duration-700 overflow-hidden">
-                     <div class="w-full h-full flex items-center justify-center opacity-20 text-[10px] uppercase">Sarah / Tech</div>
+                <div class="group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="aspect-[3/4] bg-neutral-800 border border-white/10 grayscale group-hover:grayscale-0 transition-all duration-700 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <h4 class="font-magra mt-6 text-lg">Sarah</h4>
+                    <p class="text-xs font-magra opacity-50">Tech & Cloud Architect</p>
                 </div>
-                <h4 class="text-xl mb-2 tracking-widest">Sarah</h4>
-                <p class="text-[10px] uppercase text-[#FF5B8E] tracking-[0.3em]">Cloud & Software Engineering</p>
-            </div>
-            <div class="bg-transparent p-12 text-center" data-aos="fade-up" data-aos-delay="200">
-                <div class="aspect-[3/4] bg-[#142030] mb-8 border-kore grayscale hover:grayscale-0 transition-all duration-700 overflow-hidden">
-                     <div class="w-full h-full flex items-center justify-center opacity-20 text-[10px] uppercase">Manon / Strat</div>
+                <div class="group" data-aos="fade-up" data-aos-delay="400">
+                    <div class="aspect-[3/4] bg-neutral-800 border border-white/10 grayscale group-hover:grayscale-0 transition-all duration-700 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <h4 class="font-magra mt-6 text-lg">Alyssa</h4>
+                    <p class="text-xs font-magra opacity-50">Creative & Content Director</p>
                 </div>
-                <h4 class="text-xl mb-2 tracking-widest">Manon</h4>
-                <p class="text-[10px] uppercase text-[#FF5B8E] tracking-[0.3em]">Strategy & Business Intelligence</p>
             </div>
         </div>
     </section>
 
-    <footer id="contact" class="py-32 px-8 md:px-24 flex flex-col items-center border-t border-white/10">
-        <h2 class="text-5xl md:text-7xl text-center mb-16 leading-tight" data-aos="zoom-out">PRÊT À RÉVOLUTIONNER<br>VOTRE MODÈLE ?</h2>
-        <a href="mailto:hello@kore.agency" class="cta-glow border-kore px-16 py-6 text-sm font-magra tracking-widest hover:bg-white hover:text-black transition-all">
-            DÉMARRER L'AUDIT ZENWELL
-        </a>
-        <div class="mt-32 w-full flex justify-between items-end opacity-40 text-[8px] tracking-[0.4em] uppercase">
-            <p>KORE Agency © 2026</p>
-            <p>Deployed via Vercel x GitHub</p>
+    <section id="contact" class="py-40 text-center px-6">
+        <div class="max-w-3xl mx-auto" data-aos="zoom-in">
+            <h2 class="font-magra text-4xl md:text-6xl mb-12">Prêt pour la reconstruction ?</h2>
+            <p class="mb-12 text-lg opacity-70">Réservez un audit confidentiel de 30 minutes avec nos leads.</p>
+            <button class="font-magra border border-white px-16 py-6 text-xl hover:bg-white hover:text-black transition-all duration-500 rounded-none btn-pulse">
+                Réserver l'Audit
+            </button>
+        </div>
+    </section>
+
+    <footer class="p-12 border-t border-white/5 text-[10px] font-magra opacity-40 flex justify-between">
+        <span>© 2026 KORE AGENCY</span>
+        <div class="space-x-8">
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+            <a href="#">LinkedIn</a>
         </div>
     </footer>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        // Initialisation AOS
         AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Effet de parallaxe léger au scroll
+        window.addEventListener('scroll', function() {
+            const parallax = document.querySelectorAll('.parallax-text');
+            let scroll = window.pageYOffset;
+            parallax.forEach(el => {
+                let speed = 0.4;
+                el.style.transform = `translateY(${scroll * speed}px)`;
+            });
         });
     </script>
 </body>
-</html>            border: 1px solid var(--grege);
-        }
-
-        .btn-kore {
-            background-color: var(--rose);
-            color: white;
-            transition: all 0.3s ease;
-        }
-
-        .btn-kore:hover {
-            background-color: transparent;
-            border: 1px solid var(--rose);
-            color: var(--rose);
-            transform: translateY(-2px);
-        }
-
-        /* Effet de grain subtil */
-        .noise {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            opacity: 0.03;
-            z-index: 9999;
-            pointer-events: none;
-            background-image: url('https://grainy-gradients.vercel.app/noise.svg');
-        }
-    </style>
-</head>
-<body class="bg-no-repeat min-h-screen">
-    <div class="noise"></div>
-
-    <nav class="flex justify-between items-center p-8 border-b border-white/10 sticky top-0 bg-[#142030]/80 backdrop-blur-md z-50">
-        <div class="text-2xl font-magra font-bold tracking-tighter">KORE <span class="font-light text-sm italic">agency</span></div>
-        <div class="hidden md:flex space-x-8 text-sm uppercase tracking-widest">
-            <a href="#expertises" class="hover:text-[#FF5B8E] transition">Expertises</a>
-            <a href="#team" class="hover:text-[#FF5B8E] transition">L'Équipe</a>
-            <a href="#contact" class="hover:text-[#FF5B8E] transition">Contact</a>
-        </div>
-    </nav>
-
-    <section class="h-screen flex flex-col justify-center px-8 md:px-24">
-        <div data-aos="fade-up" data-aos-duration="1000">
-            <p class="text-[#FF5B8E] font-magra mb-4 tracking-[0.3em]">RE-KORE YOUR BUSINESS</p>
-            <h1 class="text-5xl md:text-8xl font-bold leading-none mb-8">LE FUTUR A UN CŒUR.<br>C'EST LE VÔTRE.</h1>
-            <p class="max-w-xl text-lg mb-10 opacity-80">
-                Kore fusionne l'ingénierie tech de pointe (Cloud, BI, Automatisation) et le branding éditorial pour transformer ZenWell en leader du bien-être connecté.
-            </p>
-            <div class="flex space-x-4">
-                <button class="btn-kore px-10 py-4 font-magra text-sm rounded-none">AUDIT YOUR CORE</button>
-                <div class="hidden md:flex items-center space-x-4 ml-12 opacity-50 text-xs uppercase tracking-widest">
-                    <span>Trusted by</span>
-                    <div class="h-[1px] w-12 bg-white"></div>
-                    <span>AWS • VERCEL • GITHUB</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="expertises" class="py-24 px-8 md:px-24 bg-black/20">
-        <h2 class="text-3xl font-magra mb-16" data-aos="fade-right">NOS PILIERS</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-0">
-            <div class="brutalist-border p-8 hover:bg-[#FF5B8E]/10 transition-all group" data-aos="zoom-in">
-                <span class="text-xs text-[#FF5B8E]">01. STRATÉGIE</span>
-                <h3 class="text-xl my-4">Audit & Repositionnement</h3>
-                <p class="text-sm opacity-70">Analyse de l'ADN de ZenWell et redéfinition du positionnement pour dominer le secteur Gym-App.</p>
-            </div>
-            <div class="brutalist-border p-8 hover:bg-[#FF5B8E]/10 transition-all" data-aos="zoom-in" data-aos-delay="100">
-                <span class="text-xs text-[#B6C7D8]">02. INFRA</span>
-                <h3 class="text-xl my-4">Cloud & Architecture</h3>
-                <p class="text-sm opacity-70">Déploiement scalable sur AWS. Performance, sécurité et disponibilité critique des données membres.</p>
-            </div>
-            <div class="brutalist-border p-8 hover:bg-[#FF5B8E]/10 transition-all" data-aos="zoom-in" data-aos-delay="200">
-                <span class="text-xs text-[#742755]">03. TECH</span>
-                <h3 class="text-xl my-4">Ingénierie & Automatisation</h3>
-                <p class="text-sm opacity-70">Développement de workflows automatisés et intégration No-Code/Pro-Code pour l'efficience opérationnelle.</p>
-            </div>
-            </div>
-    </section>
-
-    <section id="team" class="py-24 px-8 md:px-24">
-        <h2 class="text-3xl font-magra mb-16 text-center" data-aos="fade-up">L'ÉQUIPE KORE</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div class="text-center" data-aos="fade-up">
-                <div class="w-full aspect-square bg-[#EAD9C8]/10 mb-6 brutalist-border flex items-center justify-center grayscale hover:grayscale-0 transition">
-                    <span class="text-xs opacity-30 italic">[Photo Manon]</span>
-                </div>
-                <h4 class="font-magra text-lg">Manon</h4>
-                <p class="text-xs uppercase text-[#FF5B8E] tracking-widest">Strategy & BI</p>
-            </div>
-            <div class="text-center" data-aos="fade-up" data-aos-delay="100">
-                <div class="w-full aspect-square bg-[#EAD9C8]/10 mb-6 brutalist-border flex items-center justify-center grayscale hover:grayscale-0 transition">
-                    <span class="text-xs opacity-30 italic">[Photo Sarah]</span>
-                </div>
-                <h4 class="font-magra text-lg">Sarah</h4>
-                <p class="text-xs uppercase text-[#FF5B8E] tracking-widest">Tech & Cloud</p>
-            </div>
-            <div class="text-center" data-aos="fade-up" data-aos-delay="200">
-                <div class="w-full aspect-square bg-[#EAD9C8]/10 mb-6 brutalist-border flex items-center justify-center grayscale hover:grayscale-0 transition">
-                    <span class="text-xs opacity-30 italic">[Photo Alyssa]</span>
-                </div>
-                <h4 class="font-magra text-lg">Alyssa</h4>
-                <p class="text-xs uppercase text-[#FF5B8E] tracking-widest">Creative & Content</p>
-            </div>
-        </div>
-    </section>
-
-    <footer id="contact" class="p-24 border-t border-white/10 text-center">
-        <h2 class="text-4xl font-magra mb-8">PRÊT À REJOINDRE LE CORE ?</h2>
-        <button class="btn-kore px-12 py-4 rounded-none font-magra mb-12">DÉMARRER LE PROJET</button>
-        <p class="text-[10px] uppercase tracking-widest opacity-40">Kore Agency © 2026 • Powered by Vercel & GitHub</p>
-    </footer>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init();
-        // Le logo sera inséré ici dynamiquement une fois fourni
-        console.log("Kore Agency Ready to deploy on Vercel.");
-    </script>
-</body>
-</html>            pointer-events: none;
-            opacity: 0.04;
-            z-index: 50;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-        }
-
-        .border-grege { border-color: rgba(234, 217, 200, 0.2); }
-        
-        .btn-hover:hover {
-            background-color: transparent;
-            color: var(--impulsion);
-            border: 1px solid var(--impulsion);
-        }
-
-        /* Animations sèches */
-        .reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
-</head>
-<body class="noise">
-
-    <nav class="fixed w-full z-40 border-b border-grege bg-[#142030]/80 backdrop-blur-md">
-        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-            <span class="text-2xl font-bold tracking-tighter serif italic">KORE.</span>
-            <div class="hidden md:flex space-x-8 text-xs uppercase tracking-[0.2em]">
-                <a href="#services" class="hover:text-[#FF5B8E] transition-colors">Services</a>
-                <a href="#team" class="hover:text-[#FF5B8E] transition-colors">The Team</a>
-                <a href="#tech" class="hover:text-[#FF5B8E] transition-colors">Expertise</a>
-            </div>
-            <button class="rounded-none border border-grege px-6 py-2 text-xs uppercase tracking-widest hover:bg-[#EAD9C8] hover:text-[#142030] transition-all">
-                Contact
-            </button>
-        </div>
-    </nav>
-
-    <section class="relative min-h-screen flex flex-col justify-center pt-20 bg-main-gradient overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div class="reveal">
-                <h1 class="text-6xl md:text-8xl leading-none mb-8">
-                    Digital <br><span class="italic">Transformation</span> <br>from the Inside Out.
-                </h1>
-                <p class="text-lg md:text-xl max-w-md mb-10 font-light opacity-80">
-                    High-end engineering and strategic design for the next generation of tech leaders.
-                </p>
-                <div class="flex flex-col sm:flex-row gap-4">
-                    <button class="rounded-none bg-[#FF5B8E] text-white px-10 py-5 text-sm uppercase font-bold tracking-widest hover:bg-transparent border border-[#FF5B8E] transition-all">
-                        Audit your Core
-                    </button>
-                </div>
-            </div>
-            <div class="relative hidden lg:block reveal" style="transition-delay: 200ms;">
-                <div class="aspect-square border border-grege p-8 flex items-center justify-center">
-                    <div class="w-full h-full border border-grege/30 flex items-center justify-center relative">
-                        <span class="absolute -top-3 -left-3 text-[#FF5B8E] text-2xl">+</span>
-                        <span class="absolute -bottom-3 -right-3 text-[#FF5B8E] text-2xl">+</span>
-                        <div class="text-center">
-                            <p class="serif italic text-4xl">Est. 2026</p>
-                            <p class="text-[10px] uppercase tracking-[0.5em] mt-4 opacity-50">Precision Engineering</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="max-w-7xl mx-auto px-6 mt-20 w-full reveal" style="transition-delay: 400ms;">
-            <p class="text-[10px] uppercase tracking-[0.3em] mb-8 opacity-40">Trusted by leaders in Tech & Wellness</p>
-            <div class="flex flex-wrap gap-12 opacity-30 grayscale items-center">
-                <span class="text-xl font-bold italic serif">LUMINA</span>
-                <span class="text-xl font-bold tracking-tighter">OXY-TECH</span>
-                <span class="text-xl font-bold serif">SENTINEL</span>
-                <span class="text-xl font-bold tracking-widest">AETHER</span>
-                <span class="text-xl font-bold italic serif">VORA</span>
-            </div>
-        </div>
-    </section>
-
-    <section id="services" class="py-32 bg-[#142030]">
-        <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-4xl md:text-5xl mb-20 serif">Expertise <span class="text-[#FF5B8E]">.</span></h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                <div class="border border-grege p-10 hover:bg-[#742755]/20 transition-all group reveal">
-                    <span class="text-[10px] text-[#FF5B8E] mb-4 block">01</span>
-                    <h3 class="text-2xl mb-4 serif">Audit Stratégique</h3>
-                    <p class="text-sm font-light leading-relaxed opacity-60">Analyse profonde de vos infrastructures et processus pour identifier les goulots d'étranglement.</p>
-                </div>
-                <div class="border border-grege p-10 hover:bg-[#742755]/20 transition-all group reveal" style="transition-delay: 100ms;">
-                    <span class="text-[10px] text-[#FF5B8E] mb-4 block">02</span>
-                    <h3 class="text-2xl mb-4 serif">Cloud Architecture</h3>
-                    <p class="text-sm font-light leading-relaxed opacity-60">Migration et optimisation AWS/Azure avec une sécurité sans compromis.</p>
-                </div>
-                <div class="border border-grege p-10 hover:bg-[#742755]/20 transition-all group reveal" style="transition-delay: 200ms;">
-                    <span class="text-[10px] text-[#FF5B8E] mb-4 block">03</span>
-                    <h3 class="text-2xl mb-4 serif">Ingénierie Fullstack</h3>
-                    <p class="text-sm font-light leading-relaxed opacity-60">Développement de plateformes robustes scalables utilisant les derniers standards.</p>
-                </div>
-                <div class="border border-grege p-10 hover:bg-[#742755]/20 transition-all group reveal" style="transition-delay: 300ms;">
-                    <span class="text-[10px] text-[#FF5B8E] mb-4 block">04</span>
-                    <h3 class="text-2xl mb-4 serif">Business Intelligence</h3>
-                    <p class="text-sm font-light leading-relaxed opacity-60">Transformation de vos données brutes en leviers de décision stratégique.</p>
-                </div>
-                <div class="border border-grege p-10 hover:bg-[#742755]/20 transition-all group reveal" style="transition-delay: 400ms;">
-                    <span class="text-[10px] text-[#FF5B8E] mb-4 block">05</span>
-                    <h3 class="text-2xl mb-4 serif">UI/UX Haute-Couture</h3>
-                    <p class="text-sm font-light leading-relaxed opacity-60">Interfaces minimalistes et efficaces conçues pour la conversion.</p>
-                </div>
-                <div class="border border-grege p-10 hover:bg
+</html>

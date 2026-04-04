@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KORE | Digital Transformation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --encre: #142030;
+            --prunelle: #742755;
+            --impulsion: #FF5B8E;
+            --grege: #EAD9C8;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--encre);
+            color: var(--grege);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .bg-main-gradient {
+            background: linear-gradient(180deg, #142030 0%, #742755 100%);
+        }
+
+        /* Overlay Grain Texture */
+        .noise::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            opacity: 0.04;
+            z-index: 50;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        .border-grege { border-color: rgba(234, 217, 200, 0.2); }
+        
+        .btn-hover:hover {
+            background-color: transparent;
+            color: var(--impulsion);
+            border: 1px solid var(--impulsion);
+        }
+
+        /* Animations sèches */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="noise">
+
+    <nav class="fixed w-full z-40 border-b border-grege bg-[#142030]/80 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <span class="text-2xl font-bold tracking-tighter serif italic">KORE.</span>
+            <div class="hidden md:flex space-x-8 text-xs uppercase tracking-[0.2em]">
+                <a href="#services" class="hover:text-[#FF5B8E] transition-colors">Services</a>
+                <a href="#team" class="hover:text-[#FF5B8E] transition-colors">The Team</a>
+                <a href="#tech" class="hover:text-[#FF5B8E] transition-colors">Expertise</a>
+            </div>
+            <button class="rounded-none border border-grege px-6 py-2 text-xs uppercase tracking-widest hover:bg-[#EAD9C8] hover:text-[#142030] transition-all">
+                Contact
+            </button>
+        </div>
+    </nav>
+
+    <section class="relative min-h-screen flex flex-col justify-center pt-20 bg-main-gradient overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="reveal">
+                <h1 class="text-6xl md:text-8xl leading-none mb-8">
+                    Digital <br><span class="italic">Transformation</span> <br>from the Inside Out.
+                </h1>
+                <p class="text-lg md:text-xl max-w-md mb-10 font-light opacity-80">
+                    High-end engineering and strategic design for the next generation of tech leaders.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <button class="rounded-none bg-[#FF5B8E] text-white px-10 py-5 text-sm uppercase font-bold tracking-widest hover:bg-transparent border border-[#FF5B8E] transition-all">
+                        Audit your Core
+                    </button>
+                </div>
+            </div>
+            <div class="relative hidden lg:block reveal" style="transition-delay: 200ms;">
+                <div class="aspect-square border border-grege p-8 flex items-center justify-center">
+                    <div class="w-full h-full border border-grege/30 flex items-center justify-center relative">
+                        <span class="absolute -top-3 -left-3 text-[#FF5B8E] text-2xl">+</span>
+                        <span class="absolute -bottom-3 -right-3 text-[#FF5B8E] text-2xl">+</span>
+                        <div class="text-center">
+                            <p class="serif italic text-4xl">Est. 2026</p>
+                            <p class="text-[10px] uppercase tracking-[0.5em] mt-4 opacity-50">Precision Engineering</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 mt-20 w-full reveal" style="transition-delay: 400ms;">
+            <p class="text-[10px] uppercase tracking-[0.3em] mb-8 opacity-40">Trusted by leaders in Tech & Wellness</p>
+            <div class="flex flex-wrap gap-12 opacity-30 grayscale items-center">
+                <span class="text-xl font-bold italic serif">LUMINA</span>
+                <span class="text-xl font-bold tracking-tighter">OXY-TECH</span>
+                <span class="text-xl font-bold serif">SENTINEL</span>
+                <span class="text-xl font-bold tracking-widest">AETHER</span>
+                <span class="text-xl font-bold italic serif">VORA</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-32 bg-[#142030]">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-4xl md:text-5xl mb-20 serif">Expertise <span class="text-[#FF5B8E]">.</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+                <div class="border border-grege p-10 hover:bg-[#742755]/20 transition-all group reveal">
+                    <span class="text-[10px] text-[#FF5B8E] mb-4 block">01</span>
+                    <h3 class="text-2xl mb-4 serif">Audit Stratégique</h3>
+                    <p class="text-sm font-light leading-relaxed opacity-60">Analyse profonde de vos infrastructures et processus pour identifier les goulots d'étranglement.</p>
+                </div>
+                <div class="border border-grege p-10 hover:bg-[#742755]/20 transition-all group reveal" style="transition-delay: 100ms;">
+                    <span class="text-[10px] text-[#FF5B8E] mb-4 block">02</span>
+                    <h3 class="text-2xl mb-4 serif">Cloud Architecture</h3>
+                    <p class="text-sm font-light leading-relaxed opacity-60">Migration et optimisation AWS/Azure avec une sécurité sans compromis.</p>
+                </div>
+                <div class="border border-grege p-10 hover:bg-[#742755]/20 transition-all group reveal" style="transition-delay: 200ms;">
+                    <span class="text-[10px] text-[#FF5B8E] mb-4 block">03</span>
+                    <h3 class="text-2xl mb-4 serif">Ingénierie Fullstack</h3>
+                    <p class="text-sm font-light leading-relaxed opacity-60">Développement de plateformes robustes scalables utilisant les derniers standards.</p>
+                </div>
+                <div class="border border-grege p-10 hover:bg-[#742755]/20 transition-all group reveal" style="transition-delay: 300ms;">
+                    <span class="text-[10px] text-[#FF5B8E] mb-4 block">04</span>
+                    <h3 class="text-2xl mb-4 serif">Business Intelligence</h3>
+                    <p class="text-sm font-light leading-relaxed opacity-60">Transformation de vos données brutes en leviers de décision stratégique.</p>
+                </div>
+                <div class="border border-grege p-10 hover:bg-[#742755]/20 transition-all group reveal" style="transition-delay: 400ms;">
+                    <span class="text-[10px] text-[#FF5B8E] mb-4 block">05</span>
+                    <h3 class="text-2xl mb-4 serif">UI/UX Haute-Couture</h3>
+                    <p class="text-sm font-light leading-relaxed opacity-60">Interfaces minimalistes et efficaces conçues pour la conversion.</p>
+                </div>
+                <div class="border border-grege p-10 hover:bg

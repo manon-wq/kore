@@ -16,246 +16,237 @@
             --prunelle: #742755;
             --impulsion: #FF5B8E;
             --ether: #B6C7D8;
+            --font-title: 'Magra', sans-serif;
+            --font-body: 'Overlock', sans-serif;
         }
 
         body {
             background-color: var(--encre);
             color: var(--grege);
-            font-family: 'Overlock', sans-serif;
+            font-family: var(--font-body);
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
-        h1, h2, h3, .navbar-brand, .magra-font {
-            font-family: 'Magra', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        /* Hero & Gradients */
-        .hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
+        /* --- Effet Background Ready.so --- */
+        .bg-glow {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: -1;
             background: 
-                radial-gradient(circle at 10% 20%, rgba(255, 91, 142, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(116, 39, 85, 0.2) 0%, transparent 40%),
-                var(--encre);
+                radial-gradient(circle at 20% 30%, rgba(116, 39, 85, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255, 91, 142, 0.1) 0%, transparent 50%);
         }
 
-        .gradient-text {
-            background: linear-gradient(90deg, var(--ether), var(--impulsion));
+        /* --- Typographie --- */
+        h1, h2, h3, .nav-link, .btn-kore {
+            font-family: var(--font-title);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, var(--grege), var(--impulsion));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-weight: 700;
         }
 
-        /* Glassmorphism */
-        .glass-card {
-            background: rgba(182, 199, 216, 0.03);
-            border: 1px solid rgba(182, 199, 216, 0.1);
-            backdrop-filter: blur(12px);
+        /* --- Navigation --- */
+        .navbar {
+            padding: 1.5rem 0;
+            background: rgba(20, 32, 48, 0.7);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(234, 217, 200, 0.1);
+        }
+
+        /* --- Cards & Bento Grid (Style Ready.so) --- */
+        .bento-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(234, 217, 200, 0.1);
             border-radius: 24px;
-            transition: all 0.3s ease;
+            padding: 40px;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            height: 100%;
         }
 
-        .glass-card:hover {
+        .bento-card:hover {
             border-color: var(--impulsion);
+            background: rgba(255, 255, 255, 0.05);
             transform: translateY(-5px);
         }
 
-        /* Buttons */
+        /* --- Buttons --- */
         .btn-kore {
-            background: linear-gradient(135deg, var(--prunelle), var(--impulsion));
-            color: white;
-            border: none;
-            padding: 12px 30px;
+            background: var(--grege);
+            color: var(--encre);
             border-radius: 100px;
-            font-family: 'Magra', sans-serif;
-            font-weight: bold;
-            transition: transform 0.2s;
+            padding: 14px 32px;
+            font-weight: 700;
+            border: none;
+            transition: 0.3s;
         }
 
         .btn-kore:hover {
-            transform: scale(1.05);
+            background: var(--impulsion);
             color: white;
-            box-shadow: 0 0 20px rgba(255, 91, 142, 0.4);
+            box-shadow: 0 0 30px rgba(255, 91, 142, 0.3);
         }
 
-        .btn-outline-kore {
-            border: 1px solid var(--grege);
-            color: var(--grege);
-            border-radius: 100px;
-            padding: 12px 30px;
+        /* --- Sections --- */
+        .hero-section {
+            padding: 160px 0 100px;
+            text-align: center;
         }
 
-        /* Custom Sections */
-        .section-padding { padding: 100px 0; }
-        
-        .manifesto-box {
-            border-left: 2px solid var(--prunelle);
-            padding-left: 30px;
-            font-size: 1.2rem;
-            line-height: 1.8;
+        .manifesto-text {
+            font-size: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto;
+            color: var(--ether);
         }
 
-        .service-badge {
-            background: rgba(255, 91, 142, 0.1);
-            color: var(--impulsion);
-            border: 1px solid rgba(255, 91, 142, 0.2);
-            padding: 5px 15px;
-            border-radius: 50px;
-            font-size: 0.8rem;
+        .service-tag {
             display: inline-block;
-            margin: 5px;
+            padding: 6px 16px;
+            border-radius: 100px;
+            border: 1px solid var(--prunelle);
+            margin: 4px;
+            font-size: 0.85rem;
+            color: var(--impulsion);
+            background: rgba(116, 39, 85, 0.1);
         }
 
-        .team-img {
-            width: 80px;
-            height: 80px;
-            background: var(--ether);
-            border-radius: 50%;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: var(--encre);
+        /* --- Footer --- */
+        footer {
+            padding: 60px 0;
+            border-top: 1px solid rgba(234, 217, 200, 0.1);
         }
     </style>
 </head>
-
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top px-4" style="background: rgba(20, 32, 48, 0.8); backdrop-filter: blur(10px);">
-        <div class="container border-bottom border-secondary pb-2">
-            <a class="navbar-brand fw-bold" href="#">KORE<span style="color: var(--impulsion);">.</span></a>
-            <div class="ms-auto">
-                <a href="#contact" class="btn btn-kore btn-sm">Start a project</a>
+    <div class="bg-glow"></div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-3" href="#">KORE<span style="color: var(--impulsion);">.</span></a>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link px-3" href="#manifeste">Manifeste</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#services">Expertises</a></li>
+                    <li class="nav-item"><a class="nav-link px-3" href="#equipe">L'équipe</a></li>
+                </ul>
             </div>
+            <a href="#contact" class="btn btn-kore d-none d-lg-block">Travaillons ensemble</a>
         </div>
     </nav>
 
-    <header class="hero">
+    <header class="hero-section">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-8">
-                    <span class="badge rounded-pill border border-secondary text-uppercase px-3 py-2 mb-4" style="letter-spacing: 3px; color: var(--ether);">
-                        Digital Transformation Agency
-                    </span>
-                    <h1 class="display-1 fw-bold mb-4">
-                        Digital transformation from <span class="gradient-text">the inside out.</span>
-                    </h1>
-                    <p class="lead mb-5 fs-4" style="max-width: 600px; color: var(--ether);">
-                        Nous extrayons la substance brute de votre projet pour la propulser dans le futur.
-                    </p>
-                    <div class="d-flex gap-3">
-                        <a href="#manifeste" class="btn btn-kore btn-lg">Découvrir le Kore</a>
-                        <a href="#services" class="btn btn-outline-kore btn-lg">Nos Services</a>
-                    </div>
-                </div>
+            <h1 class="display-1 fw-bold mb-4">Digital transformation <br><span class="text-gradient">from the inside out.</span></h1>
+            <p class="manifesto-text mb-5">
+                Nous ne sommes pas là pour ajouter du vernis. Nous extrayons la substance brute de votre business pour la propulser dans le futur.
+            </p>
+            <div class="d-flex justify-content-center gap-3">
+                <button class="btn btn-kore">Lancer un projet</button>
+                <a href="#manifeste" class="btn btn-outline-light rounded-pill px-4 py-3">Voir la méthode</a>
             </div>
         </div>
     </header>
 
-    <section id="manifeste" class="section-padding" style="background: rgba(0,0,0,0.2);">
+    <section id="manifeste" class="py-5">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="manifesto-box">
-                        <h2 class="mb-4">Le monde sature.</h2>
-                        <p>Trop de bruit, trop de flux, trop d’interfaces sans âme. Dans cette accélération effrénée, le digital a parfois perdu son <strong>Kore</strong>. Son noyau. Sa raison d'être.</p>
-                        <p class="text-white">Chez Kore, nous ne croyons pas à la transformation digitale "cosmétique". Nous sommes là pour extraire la substance brute de votre projet et la propulser dans le futur.</p>
+            <div class="row g-4">
+                <div class="col-lg-8">
+                    <div class="bento-card">
+                        <h2 class="h1 mb-4">Le digital est viscéral.</h2>
+                        <p class="fs-5 text-secondary">Le monde sature de flux sans âme. Chez Kore, notre méthode consiste à retrouver votre noyau (Core) pour bâtir des structures qui durent. Nous sommes des curateurs de potentiel.</p>
                     </div>
                 </div>
-            </div>
-
-            <div class="row g-4 mt-5">
-                <div class="col-md-4">
-                    <div class="glass-card p-5 h-100">
-                        <h3 class="h4 mb-3" style="color: var(--impulsion);">Core Values</h3>
-                        <p class="text-secondary small">Parce que sans valeurs réelles, la technologie est vide.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="glass-card p-5 h-100">
-                        <h3 class="h4 mb-3" style="color: var(--impulsion);">Core Tech</h3>
-                        <p class="text-secondary small">Parce que l'innovation doit être solide, pas seulement brillante.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="glass-card p-5 h-100">
-                        <h3 class="h4 mb-3" style="color: var(--impulsion);">Core Human</h3>
-                        <p class="text-secondary small">Parce que derrière chaque pixel, il y a un battement de cœur.</p>
+                <div class="col-lg-4">
+                    <div class="bento-card" style="background: linear-gradient(135deg, var(--prunelle), var(--encre));">
+                        <h3 class="h4">Core Values</h3>
+                        <p class="small opacity-75">Sans valeurs réelles, la technologie reste vide.</p>
+                        <hr class="border-secondary">
+                        <h3 class="h4">Core Tech</h3>
+                        <p class="small opacity-75">L'innovation doit être solide, pas seulement brillante.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="services" class="section-padding">
-        <div class="container text-center mb-5">
-            <h2 class="display-4">Expertises</h2>
-            <div class="mt-4">
-                <span class="service-badge">Audit et stratégie digitale</span>
-                <span class="service-badge">Architecture cloud</span>
-                <span class="service-badge">Ingénierie logicielle</span>
-                <span class="service-badge">Automatisation</span>
-                <span class="service-badge">BI & Data analytics</span>
-                <span class="service-badge">UX/UI</span>
-                <span class="service-badge">Branding</span>
+    <section id="services" class="py-5">
+        <div class="container">
+            <div class="bento-card">
+                <div class="row align-items-center">
+                    <div class="col-lg-5">
+                        <h2 class="display-5 mb-4">Nos <br>Expertises</h2>
+                        <p class="text-secondary">De l'architecture cloud à l'identité de marque, nous couvrons tout le spectre du digital viscéral.</p>
+                    </div>
+                    <div class="col-lg-7">
+                        <div class="d-flex flex-wrap">
+                            <span class="service-tag">Audit et stratégie digitale</span>
+                            <span class="service-tag">Architecture cloud</span>
+                            <span class="service-tag">Ingénierie logicielle</span>
+                            <span class="service-tag">Automatisation</span>
+                            <span class="service-tag">BI et Data analytics</span>
+                            <span class="service-tag">UX / UI Design</span>
+                            <span class="service-tag">Branding & Contenu</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="section-padding bg-black bg-opacity-25">
+    <section id="equipe" class="py-5">
         <div class="container">
-            <h2 class="mb-5 text-center">Les Curateurs de Potentiel</h2>
-            <div class="row g-4 justify-content-center">
-                <div class="col-md-4 text-center">
-                    <div class="glass-card p-4">
-                        <div class="team-img mx-auto">S</div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="bento-card text-center">
+                        <div class="mb-3 fs-1">◈</div>
                         <h4>Sarah</h4>
-                        <p class="small text-uppercase" style="color: var(--impulsion);">Stratégie Digitale & Systèmes</p>
+                        <p class="small text-uppercase text-secondary">Stratégie & Systèmes</p>
                     </div>
                 </div>
-                <div class="col-md-4 text-center">
-                    <div class="glass-card p-4">
-                        <div class="team-img mx-auto">A</div>
+                <div class="col-md-4">
+                    <div class="bento-card text-center">
+                        <div class="mb-3 fs-1">◇</div>
                         <h4>Alyssa</h4>
-                        <p class="small text-uppercase" style="color: var(--impulsion);">Expérience & Social Media</p>
+                        <p class="small text-uppercase text-secondary">Expérience & Social</p>
                     </div>
                 </div>
-                <div class="col-md-4 text-center">
-                    <div class="glass-card p-4">
-                        <div class="team-img mx-auto">M</div>
+                <div class="col-md-4">
+                    <div class="bento-card text-center">
+                        <div class="mb-3 fs-1">▼</div>
                         <h4>Manon</h4>
-                        <p class="small text-uppercase" style="color: var(--impulsion);">Identité & Design</p>
+                        <p class="small text-uppercase text-secondary">Identité & Design</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="section-padding">
-        <div class="container text-center">
-            <div class="glass-card p-5 col-lg-8 mx-auto">
-                <h2 class="display-5 mb-4">Prêt à extraire votre substance ?</h2>
-                <p class="mb-5">On nous dit d'aller vite. Nous choisissons d'aller loin, en partant du centre.</p>
-                <form class="row g-3 justify-content-center">
-                    <div class="col-md-8">
-                        <input type="email" class="form-control bg-transparent text-white border-secondary p-3" placeholder="votre@email.com">
+    <section id="contact" class="py-5 mb-5">
+        <div class="container">
+            <div class="bento-card text-center py-5" style="border: 1px solid var(--impulsion);">
+                <h2 class="display-4 mb-4">Partons du centre.</h2>
+                <p class="mb-5 opacity-75">Prêt à transformer votre business de l'intérieur ?</p>
+                <div class="col-md-6 mx-auto">
+                    <div class="input-group mb-3 bg-dark rounded-pill p-1 border border-secondary">
+                        <input type="text" class="form-control border-0 bg-transparent text-white px-4" placeholder="Votre email...">
+                        <button class="btn btn-kore">C'est parti</button>
                     </div>
-                    <div class="col-md-4">
-                        <button class="btn btn-kore w-100 h-100">Discuter du projet</button>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-5 border-top border-secondary mt-5 text-center">
-        <p class="text-secondary">© 2026 KORE — Digital Viscéral.</p>
+    <footer>
+        <div class="container text-center">
+            <p class="small opacity-50">© 2026 KORE — ALL RIGHTS RESERVED. <br> DIGITAL TRANSFORMATION FROM THE INSIDE OUT.</p>
+        </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

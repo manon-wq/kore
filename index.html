@@ -24,17 +24,269 @@
             background-color: var(--encre);
             color: var(--grege);
             font-family: 'Overlock', sans-serif;
+            font-weight: 400;
             overflow-x: hidden;
-            line-height: 1.6;
         }
 
-        /* typography - no bold, no all-caps */
-        h1, h2, h3, h4, .magra, .navbar-brand, .btn, .nav-link {
-            font-family: 'Magra', sans-serif !important;
-            font-weight: 400 !important;
+        /* typography constraints */
+        h1, h2, h3, h4, .magra, .btn, .nav-link, strong {
+            font-family: 'Magra', sans-serif;
             text-transform: none !important;
+            font-weight: 400 !important;
         }
 
+        /* navigation */
+        .navbar {
+            padding: 2rem 0;
+            background: transparent;
+            transition: all 0.4s;
+        }
+        .navbar.scrolled {
+            padding: 1rem 0;
+            background: rgba(20, 32, 48, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(182, 199, 216, 0.1);
+        }
+
+        /* hero & images */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        .img-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+        .img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(30%) brightness(0.8);
+            transition: transform 1.2s ease;
+        }
+        .img-container:hover img { transform: scale(1.05); }
+
+        /* cards & glassmorphism */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(182, 199, 216, 0.1);
+            padding: 40px;
+            height: 100%;
+            transition: all 0.4s ease;
+        }
+        .glass-panel:hover {
+            border-color: var(--impulsion);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        /* buttons */
+        .btn-kore {
+            border: 1px solid var(--ether);
+            color: var(--grege);
+            padding: 12px 35px;
+            background: transparent;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        .btn-kore:hover {
+            background: var(--impulsion);
+            border-color: var(--impulsion);
+            color: white;
+        }
+
+        /* section labels */
+        .label {
+            color: var(--impulsion);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .social-proof {
+            opacity: 0.6;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(182, 199, 216, 0.2);
+            padding-top: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fs-3" href="#">kore.</a>
+            <div class="ms-auto d-none d-lg-flex gap-4">
+                <a href="#services" class="nav-link">services</a>
+                <a href="#manifeste" class="nav-link">manifeste</a>
+                <a href="#contact" class="btn-kore">rejoindre</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-section">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-7" data-aos="fade-up" data-aos-duration="1000">
+                    <span class="label">transformation digitale</span>
+                    <h1 class="display-2 mb-4" style="color: var(--ether)">Digital transformation from the inside out.</h1>
+                    <p class="lead mb-5 opacity-75">Nous ne transformons pas les interfaces. Nous révélons votre noyau pour propulser votre projet dans le futur.</p>
+                    
+                    <div class="social-proof d-flex align-items-center gap-5">
+                        <span>Ils nous font confiance :</span>
+                        <span class="magra opacity-50">Airly</span>
+                        <span class="magra opacity-50">TechCore</span>
+                        <span class="magra opacity-50">Lumina</span>
+                    </div>
+                </div>
+                <div class="col-lg-5" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="img-container shadow-lg" style="height: 500px;">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=800" alt="Bureau moderne">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="manifeste" class="py-5 mt-5">
+        <div class="container py-5">
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-5 mb-lg-0" data-aos="fade-right">
+                    <div class="img-container" style="height: 600px;">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=800" alt="Architecture digitale">
+                    </div>
+                </div>
+                <div class="col-lg-6 offset-lg-1" data-aos="fade-left">
+                    <span class="label">notre philosophie</span>
+                    <h2 class="h1 mb-5">Le monde sature.</h2>
+                    <div class="opacity-75 fs-5 mb-5">
+                        <p>Trop de bruit, trop de flux, trop d’interfaces sans âme. Dans cette accélération effrénée, le digital a parfois perdu son noyau.</p>
+                        <p>Chez kore, nous ne croyons pas à la transformation "cosmétique". Nous extrayons la substance brute de votre business.</p>
+                    </div>
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <span class="d-block mb-2" style="color: var(--impulsion)">01. Core Values</span>
+                            <p class="small opacity-50">La technologie sans valeurs est vide.</p>
+                        </div>
+                        <div class="col-md-4">
+                            <span class="d-block mb-2" style="color: var(--impulsion)">02. Core Tech</span>
+                            <p class="small opacity-50">L'innovation doit être solide.</p>
+                        </div>
+                        <div class="col-md-4">
+                            <span class="d-block mb-2" style="color: var(--impulsion)">03. Core Human</span>
+                            <p class="small opacity-50">Un battement de cœur derrière chaque pixel.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-5 bg-black bg-opacity-25">
+        <div class="container py-5">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <span class="label">expertises</span>
+                <h2 class="h1">Nos curatelles numériques</h2>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="glass-panel">
+                        <h3 class="h4 mb-4" style="color: var(--ether)">Stratégie & Data</h3>
+                        <ul class="list-unstyled opacity-75">
+                            <li class="mb-2">— Audit et stratégie digitale</li>
+                            <li class="mb-2">— BI et Data analytics</li>
+                            <li class="mb-2">— Architecture cloud</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="glass-panel">
+                        <h3 class="h4 mb-4" style="color: var(--ether)">Ingénierie</h3>
+                        <ul class="list-unstyled opacity-75">
+                            <li class="mb-2">— Ingénierie logicielle</li>
+                            <li class="mb-2">— Automatisation</li>
+                            <li class="mb-2">— Systèmes scalables</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="glass-panel">
+                        <h3 class="h4 mb-4" style="color: var(--ether)">Expérience</h3>
+                        <ul class="list-unstyled opacity-75">
+                            <li class="mb-2">— UX / UI design</li>
+                            <li class="mb-2">— Branding identitaire</li>
+                            <li class="mb-2">— Création de contenus</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 my-5">
+        <div class="container py-5 text-center">
+            <span class="label" data-aos="fade-up">l'équipe</span>
+            <h2 class="h1 mb-5" data-aos="fade-up">Curatrices de potentiel.</h2>
+            <div class="row g-5">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400" class="rounded-circle mb-4" width="150" height="150" style="object-fit: cover; filter: grayscale(1);">
+                    <h3 class="h5">Sarah</h3>
+                    <p class="small opacity-50">Responsable stratégie digitale et systèmes</p>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=400" class="rounded-circle mb-4" width="150" height="150" style="object-fit: cover; filter: grayscale(1);">
+                    <h3 class="h5">Alyssa</h3>
+                    <p class="small opacity-50">Responsable expérience et social media</p>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <img src="https://images.unsplash.com/photo-1567532939604-b6c5b0adcc2c?auto=format&fit=crop&q=80&w=400" class="rounded-circle mb-4" width="150" height="150" style="object-fit: cover; filter: grayscale(1);">
+                    <h3 class="h5">Manon</h3>
+                    <p class="small opacity-50">Responsable identité et design</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-5" data-aos="zoom-in">
+        <div class="container">
+            <div class="glass-panel text-center p-5">
+                <h2 class="display-5 mb-4">Prêt à extraire votre substance ?</h2>
+                <p class="mb-5 opacity-75">Discutons de la prochaine étape de votre évolution numérique.</p>
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <form class="d-flex gap-2">
+                            <input type="email" class="form-control bg-transparent border-secondary text-white rounded-0" placeholder="votre email">
+                            <button type="submit" class="btn-kore">rejoindre</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-5 text-center opacity-50 small">
+        <div class="container">
+            <p>© 2026 kore agence. digital transformation from the inside out.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('.navbar');
+            if (window.scrollY > 50) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        });
+    </script>
+</body>
+</html>
         /* smooth scrolling */
         html { scroll-behavior: smooth; }
 

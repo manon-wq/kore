@@ -33,7 +33,6 @@
             text-transform: none;
         }
 
-        /* Police spécifique pour les H3 */
         h3 {
             font-family: 'Instrument Serif', serif;
             font-style: italic;
@@ -41,35 +40,75 @@
             text-transform: none;
         }
 
-        /* --- Background Multi-Blobs (Intensifié) --- */
+        /* --- Background Multi-Blobs (Mouvement Intensifié & Continu) --- */
         .blob-container {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1;
             filter: blur(90px);
-            opacity: 0.5;
+            opacity: 0.6; /* Légèrement plus visible */
         }
 
         .blob {
             position: absolute;
             border-radius: 50%;
-            animation: move infinite alternate ease-in-out;
+            /* Animation linéaire et infinie pour un mouvement continu sans pause */
+            animation: moveComplex infinite linear;
         }
 
-        /* Blobs Prunelle / Impulsion */
-        .blob-pi-1 { width: 600px; height: 600px; top: -10%; left: -5%; background: linear-gradient(135deg, var(--prunelle), var(--impulsion)); animation-duration: 15s; }
-        .blob-pi-2 { width: 500px; height: 500px; bottom: -10%; right: -5%; background: linear-gradient(135deg, var(--impulsion), var(--prunelle)); animation-duration: 22s; animation-delay: -4s; }
+        /* Trajectoires et vitesses désynchronisées pour le chaos */
         
-        /* Blobs Éther (Nouveau) */
-        .blob-ether-1 { width: 450px; height: 450px; top: 20%; right: 15%; background: var(--ether); opacity: 0.6; animation-duration: 18s; animation-delay: -2s; }
-        .blob-ether-2 { width: 350px; height: 350px; bottom: 20%; left: 10%; background: var(--ether); opacity: 0.4; animation-duration: 28s; }
-        .blob-ether-3 { width: 300px; height: 300px; top: 50%; left: 40%; background: var(--ether); opacity: 0.3; animation-duration: 35s; animation-delay: -7s; }
+        /* Blobs Prunelle / Impulsion (Chauds) */
+        .blob-pi-1 { 
+            width: 700px; height: 700px; 
+            top: -10%; left: -10%; 
+            background: linear-gradient(135deg, var(--prunelle), var(--impulsion)); 
+            animation-duration: 35s; 
+        }
+        .blob-pi-2 { 
+            width: 600px; height: 600px; 
+            bottom: -15%; right: -10%; 
+            background: linear-gradient(135deg, var(--impulsion), var(--prunelle)); 
+            animation-duration: 45s; 
+            animation-delay: -5s; 
+        }
+        
+        /* Blobs Éther (Froids) */
+        .blob-ether-1 { 
+            width: 500px; height: 500px; 
+            top: 15%; right: 10%; 
+            background: var(--ether); 
+            opacity: 0.6; 
+            animation-duration: 40s; 
+            animation-delay: -10s; 
+        }
+        .blob-ether-2 { 
+            width: 400px; height: 400px; 
+            bottom: 10%; left: 5%; 
+            background: var(--ether); 
+            opacity: 0.5; 
+            animation-duration: 55s; 
+        }
+        .blob-ether-3 { 
+            width: 350px; height: 350px; 
+            top: 45%; left: 35%; 
+            background: var(--ether); 
+            opacity: 0.4; 
+            animation-duration: 30s; 
+            animation-delay: -15s; 
+        }
 
-        @keyframes move {
+        /* Keyframes complexes pour un mouvement en boucle perpétuelle et intense */
+        @keyframes moveComplex {
             0% { transform: translate(0, 0) scale(1) rotate(0deg); }
-            33% { transform: translate(12vw, 8vh) scale(1.15) rotate(120deg); }
-            66% { transform: translate(-8vw, 15vh) scale(0.9) rotate(240deg); }
-            100% { transform: translate(5vw, -10vh) scale(1.05) rotate(360deg); }
+            12.5% { transform: translate(15vw, 5vh) scale(1.1) rotate(45deg); }
+            25% { transform: translate(10vw, 20vh) scale(0.9) rotate(90deg); }
+            37.5% { transform: translate(-5vw, 15vh) scale(1.15) rotate(135deg); }
+            50% { transform: translate(-15vw, 10vh) scale(1) rotate(180deg); }
+            62.5% { transform: translate(-10vw, -10vh) scale(0.95) rotate(225deg); }
+            75% { transform: translate(5vw, -20vh) scale(1.1) rotate(270deg); }
+            87.5% { transform: translate(18vw, -5vh) scale(1.05) rotate(315deg); }
+            100% { transform: translate(0, 0) scale(1) rotate(360deg); }
         }
 
         /* --- Hero Immersif --- */

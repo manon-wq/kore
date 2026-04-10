@@ -40,65 +40,69 @@
             text-transform: none;
         }
 
-        /* --- Background Multi-Blobs (Vitesse Maximale) --- */
+        /* --- Background Multi-Blobs (Vitesse ULTRA Maximale) --- */
         .blob-container {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1;
             filter: blur(100px);
-            opacity: 0.7;
+            opacity: 0.75;
         }
 
         .blob {
             position: absolute;
             border-radius: 50%;
-            animation: moveFast infinite linear;
+            /* Animation ultra rapide et chaotique */
+            animation: moveUltraFast infinite linear;
         }
 
-        /* Blobs Chauds - Très rapides */
+        /* Blobs Chauds - Vitesse maximale, amplitude maximale */
         .blob-pi-1 { 
-            width: 600px; height: 600px; 
-            top: 10%; left: 10%; 
+            width: 700px; height: 700px; 
+            top: -10%; left: -10%; 
             background: linear-gradient(135deg, var(--prunelle), var(--impulsion)); 
-            animation-duration: 8s; 
+            animation-duration: 5s; /* Extrêmement rapide */
         }
         .blob-pi-2 { 
-            width: 550px; height: 550px; 
-            bottom: 10%; right: 10%; 
+            width: 650px; height: 650px; 
+            bottom: -10%; right: -10%; 
             background: linear-gradient(135deg, var(--impulsion), var(--prunelle)); 
-            animation-duration: 10s; 
-            animation-delay: -2s; 
+            animation-duration: 6s; /* Extrêmement rapide */
+            animation-delay: -1s; 
         }
         
-        /* Blobs Éther - Rapides */
+        /* Blobs Éther - Rapides et chaotiques */
         .blob-ether-1 { 
-            width: 450px; height: 450px; 
-            top: 40%; right: 20%; 
+            width: 550px; height: 550px; 
+            top: 30%; right: 15%; 
             background: var(--ether); 
-            animation-duration: 12s; 
-            animation-delay: -4s; 
+            animation-duration: 7s; 
+            animation-delay: -2s; 
         }
         .blob-ether-2 { 
-            width: 400px; height: 400px; 
-            bottom: 30%; left: 15%; 
+            width: 500px; height: 500px; 
+            bottom: 25%; left: 10%; 
             background: var(--ether); 
-            animation-duration: 9s; 
-            animation-delay: -1s;
+            animation-duration: 4.5s; /* Le plus rapide */
+            animation-delay: -0.5s;
         }
         .blob-ether-3 { 
-            width: 300px; height: 300px; 
+            width: 400px; height: 400px; 
             top: 50%; left: 50%; 
             background: var(--ether); 
-            animation-duration: 11s; 
+            animation-duration: 8s; 
         }
 
-        /* Animation à haute amplitude et vitesse */
-        @keyframes moveFast {
+        /* Animation ultra nerveuse traversant tout l'écran */
+        @keyframes moveUltraFast {
             0% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 0.6; }
-            25% { transform: translate(30vw, 20vh) scale(1.3) rotate(90deg); opacity: 0.8; }
-            50% { transform: translate(10vw, 40vh) scale(1) rotate(180deg); opacity: 0.6; }
-            75% { transform: translate(-20vw, 15vh) scale(1.2) rotate(270deg); opacity: 0.8; }
-            100% { transform: translate(0, 0) scale(1) rotate(360deg); opacity: 0.6; }
+            15% { transform: translate(50vw, -10vh) scale(1.4) rotate(70deg); opacity: 0.9; }
+            30% { transform: translate(-30vw, 40vh) scale(0.9) rotate(140deg); opacity: 0.7; }
+            45% { transform: translate(60vw, 70vh) scale(1.2) rotate(210deg); opacity: 0.9; }
+            60% { transform: translate(-10vw, 30vh) scale(1) rotate(280deg); opacity: 0.7; }
+            75% { transform: translate(-50vw, -30vh) scale(1.3) rotate(350deg); opacity: 0.9; }
+            90% { transform: translate(20vw, 60vh) scale(1.1) rotate(420deg); opacity: 0.7; }
+            100% { transform: translate(0, 0) scale(1) rotate(490deg); opacity: 0.6; }
         }
 
         /* --- Sections Immersives --- */
@@ -112,10 +116,24 @@
             padding: 100px 20px;
         }
 
+        /* Typographie de la Hero en Éther */
         .hero h1 {
             font-size: clamp(3.5rem, 11vw, 8rem);
             line-height: 0.85;
             margin-bottom: 40px;
+            color: var(--ether); /* Couleur de titre en Éther */
+            font-family: 'Instrument Serif', serif;
+            font-style: italic;
+        }
+
+        .hero p {
+            color: var(--ether); /* Texte d'introduction en Éther */
+            opacity: 0.9;
+        }
+
+        .hero .num-label {
+            color: var(--ether); /* Label en Éther */
+            opacity: 0.8;
         }
 
         .story-section { padding: 180px 0; position: relative; }
@@ -180,7 +198,7 @@
         <div class="container">
             <span class="num-label mb-4">Core Agency</span>
             <h1>Digital transformation<br>from the inside out.</h1>
-            <p class="lead mt-4 mb-5" style="max-width: 800px; margin: 0 auto; color: var(--ether); font-size: 1.5rem;">
+            <p class="lead mt-4 mb-5" style="max-width: 800px; margin: 0 auto; font-size: 1.5rem;">
                 Le digital est viscéral. Nous extrayons votre substance brute pour bâtir le futur.
             </p>
             <a href="#manifeste" class="btn-kore">Lancer l'extraction</a>

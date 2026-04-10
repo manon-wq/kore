@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>KORE — Digital transformation from the inside out</title>
+    <title>kore — digital transformation from the inside out.</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,16 +25,260 @@
             color: var(--grege);
             font-family: 'Overlock', cursive;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        h1, h2, h3, h4, .magra {
-            font-family: 'Magra', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+        /* override all uppercase/bold constraints */
+        h1, h2, h3, h4, .magra, .navbar-brand, .btn, .badge, .nav-link, strong, b {
+            text-transform: none !important;
+            font-weight: 400 !important;
+            font-family: 'Magra', sans-serif !important;
         }
 
-        /* Gradients Custom */
-        .bg-gradient-kore {
+        hr { opacity: 0.1; color: var(--ether); }
+
+        /* gradients & utility */
+        .text-gradient {
+            background: linear-gradient(90deg, var(--impulsion), var(--ether));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* components */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(182, 199, 216, 0.08);
+            backdrop-filter: blur(12px);
+            border-radius: 1px; /* minimalist square */
+            padding: 40px;
+            transition: all 0.4s ease;
+        }
+
+        .glass-card:hover {
+            border-color: var(--ether);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .btn-kore {
+            background: none;
+            color: var(--grege);
+            border: 1px solid var(--grege);
+            padding: 12px 35px;
+            border-radius: 0;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-kore::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: var(--impulsion);
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+
+        .btn-kore:hover::before {
+            left: 0;
+        }
+
+        .btn-kore:hover {
+            color: white;
+            border-color: var(--impulsion);
+        }
+
+        .service-list {
+            list-style: none;
+            padding: 0;
+            color: var(--ether);
+            font-size: 0.9rem;
+        }
+        .service-list li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 15px;
+        }
+        .service-list li::before {
+            content: '>';
+            color: var(--prunelle);
+            position: absolute;
+            left: 0;
+        }
+
+        /* hero section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: radial-gradient(circle at 10% 10%, var(--prunelle), transparent 40%),
+                        radial-gradient(circle at 90% 90%, #0a111a, transparent 50%);
+        }
+
+        .social-proof-hero {
+            position: absolute;
+            bottom: 40px;
+            left: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark py-4 fixed-top bg-dark bg-opacity-75" style="backdrop-filter: blur(10px);">
+        <div class="container">
+            <a class="navbar-brand fs-4" href="#">kore<span style="color:var(--impulsion)">.</span></a>
+            <div class="ms-auto">
+                <a href="#contact" class="btn btn-outline-light btn-sm px-4">let's talk</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container py-5 mt-5">
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-10">
+                    <h1 class="display-1 mb-4">digital transformation <span class="text-gradient">from the inside out.</span></h1>
+                    <p class="lead mb-5 fs-4 col-lg-8" style="color: var(--ether)">nous ne transformons pas les interfaces. nous révélons votre noyau.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#manifeste" class="btn btn-kore">notre méthode</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="social-proof-hero">
+            <div class="container">
+                <div class="d-flex align-items-center gap-4 text-secondary">
+                    <span class="small">ils nous font confiance</span>
+                    <hr class="flex-grow-1">
+                    <span class="magra small opacity-50">[ logo_client_A ]</span>
+                    <span class="magra small opacity-75">[ logo_client_B ]</span>
+                    <span class="magra small">[ logo_client_C ]</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="manifeste" class="py-5">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-7">
+                    <h2 class="mb-5" style="color: var(--ether)">notre philosophie</h2>
+                    <div class="fs-5" style="line-height: 1.8; color: var(--grege);">
+                        <p>le monde sature. trop de bruit, trop de flux, trop d’interfaces sans âme. dans cette accélération effrénée, le digital a parfois perdu son kore.</p>
+                        <p>chez kore, nous ne sommes pas là pour ajouter une couche de vernis sur des structures obsolètes. nous sommes là pour extraire la substance brute de votre projet et la propulser dans le futur.</p>
+                        <p>c’est aller chercher le core de votre business.</p>
+                    </div>
+                </div>
+                <div class="col-lg-5 d-flex flex-column justify-content-center mt-5 mt-lg-0">
+                    <div class="p-4 border-start border-1 border-secondary mb-3">
+                        <span class="d-block mb-1" style="color:var(--ether)">core values</span>
+                        <p class="small text-secondary mb-0">parce que sans valeurs réelles, la technologie est vide.</p>
+                    </div>
+                    <div class="p-4 border-start border-1 border-secondary mb-3">
+                        <span class="d-block mb-1" style="color:var(--ether)">core tech</span>
+                        <p class="small text-secondary mb-0">parce que l'innovation doit être solide, pas seulement brillante.</p>
+                    </div>
+                    <div class="p-4 border-start border-1 border-secondary">
+                        <span class="d-block mb-1" style="color:var(--ether)">core human</span>
+                        <p class="small text-secondary mb-0">parce que derrière chaque pixel, il y a un battement de cœur.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-black bg-opacity-25">
+        <div class="container py-5">
+            <h2 class="text-center mb-5" style="color: var(--ether)">nos piliers d'intervention</h2>
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="glass-card h-100">
+                        <h3 class="h4 mb-3 text-white">stratégie & expérience</h3>
+                        <p class="text-secondary mb-4">définir la direction et l'identité numérique de votre projet, en plaçant l'utilisateur au centre.</p>
+                        <ul class="service-list">
+                            <li>audit et stratégie digitale</li>
+                            <li>ux/ui (expérience et interface utilisateur)</li>
+                            <li>branding et création de contenus</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="glass-card h-100">
+                        <h3 class="h4 mb-3 text-white">ingénierie & données</h3>
+                        <p class="text-secondary mb-4">bâtir des fondations technologiques solides, performantes et scalables.</p>
+                        <ul class="service-list">
+                            <li>architecture cloud</li>
+                            <li>ingénierie logicielle et automatisation</li>
+                            <li>bi et data analytics</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container py-5 text-center">
+            <h2 class="display-6 mb-4 col-lg-8 mx-auto" style="color: var(--grege)">viscéral, pas virtuel.</h2>
+            <p class="lead col-lg-6 mx-auto" style="color: var(--ether)">nous ne sommes pas des consultants, nous sommes des curateurs de potentiel. nous choisissons d'aller loin, en partant du centre.</p>
+        </div>
+    </section>
+
+    <section class="py-5 bg-black bg-opacity-25">
+        <div class="container py-5">
+            <h2 class="mb-5 text-center" style="color: var(--ether)">curatrices de potentiel</h2>
+            <div class="row g-5">
+                <div class="col-md-4 text-center">
+                    <h3 class="h5 magra text-white">sarah</h3>
+                    <p class="small mb-0" style="color:var(--ether)">responsable stratégie digitale et systèmes</p>
+                    <hr class="w-25 mx-auto mt-4">
+                </div>
+                <div class="col-md-4 text-center">
+                    <h3 class="h5 magra text-white">alyssa</h3>
+                    <p class="small mb-0" style="color:var(--ether)">responsable expérience et social media</p>
+                    <hr class="w-25 mx-auto mt-4" style="color: var(--prunelle)">
+                </div>
+                <div class="col-md-4 text-center">
+                    <h3 class="h5 magra text-white">manon</h3>
+                    <p class="small mb-0" style="color:var(--ether)">responsable identité et design</p>
+                    <hr class="w-25 mx-auto mt-4">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-5">
+        <div class="container py-5 text-center">
+            <div class="p-5" style="background: linear-gradient(to right, #0d1521, #1e2e42); border-radius: 1px;">
+                <h2 class="display-5 mb-4" style="color: var(--ether)">prêt à extraire votre substance ?</h2>
+                <p class="mb-5 col-lg-6 mx-auto" style="color: var(--grege)">discutons de la prochaine étape de votre évolution numérique.</p>
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <form class="d-flex gap-2">
+                            <input type="email" class="form-control bg-transparent border-secondary text-white" placeholder="votre email">
+                            <button type="submit" class="btn btn-kore">contact</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-4 text-center">
+        <div class="container">
+            <p class="small text-secondary mb-0">© 2026 kore. digital transformation from the inside out.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>        .bg-gradient-kore {
             background: linear-gradient(135deg, var(--encre) 0%, var(--prunelle) 50%, var(--impulsion) 100%);
         }
 

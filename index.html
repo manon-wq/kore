@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Kore | Digital transformation from the inside out</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Magra:wght@400&family=Overlock:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Magra:wght@400&family=Overlock:wght@400&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
@@ -26,86 +27,98 @@
             position: relative;
         }
 
-        h1, h2, h3, h4, h5, .magra {
+        h1, h2, h4, h5, .magra {
             font-family: 'Magra', sans-serif;
             font-weight: 400;
             text-transform: none;
         }
 
-        /* --- Animations de Blobs (Mouvement Intense) --- */
+        /* Police spécifique pour les H3 */
+        h3 {
+            font-family: 'Instrument Serif', serif;
+            font-style: italic;
+            font-weight: 400;
+            text-transform: none;
+        }
+
+        /* --- Background Multi-Blobs (Intensifié) --- */
         .blob-container {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1;
-            filter: blur(80px);
-            opacity: 0.4;
+            filter: blur(90px);
+            opacity: 0.5;
         }
 
         .blob {
             position: absolute;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--prunelle), var(--impulsion));
-            animation: move 25s infinite alternate ease-in-out;
+            animation: move infinite alternate ease-in-out;
         }
 
-        .blob-1 { width: 500px; height: 500px; top: -10%; left: -5%; animation-duration: 18s; }
-        .blob-2 { width: 600px; height: 600px; bottom: -15%; right: -5%; animation-duration: 22s; animation-delay: -5s; }
-        .blob-3 { width: 400px; height: 400px; top: 40%; left: 30%; animation-duration: 30s; animation-delay: -10s; background: var(--prunelle); }
+        /* Blobs Prunelle / Impulsion */
+        .blob-pi-1 { width: 600px; height: 600px; top: -10%; left: -5%; background: linear-gradient(135deg, var(--prunelle), var(--impulsion)); animation-duration: 15s; }
+        .blob-pi-2 { width: 500px; height: 500px; bottom: -10%; right: -5%; background: linear-gradient(135deg, var(--impulsion), var(--prunelle)); animation-duration: 22s; animation-delay: -4s; }
+        
+        /* Blobs Éther (Nouveau) */
+        .blob-ether-1 { width: 450px; height: 450px; top: 20%; right: 15%; background: var(--ether); opacity: 0.6; animation-duration: 18s; animation-delay: -2s; }
+        .blob-ether-2 { width: 350px; height: 350px; bottom: 20%; left: 10%; background: var(--ether); opacity: 0.4; animation-duration: 28s; }
+        .blob-ether-3 { width: 300px; height: 300px; top: 50%; left: 40%; background: var(--ether); opacity: 0.3; animation-duration: 35s; animation-delay: -7s; }
 
         @keyframes move {
             0% { transform: translate(0, 0) scale(1) rotate(0deg); }
-            33% { transform: translate(15vw, 10vh) scale(1.2) rotate(120deg); }
-            66% { transform: translate(-5vw, 20vh) scale(0.8) rotate(240deg); }
-            100% { transform: translate(10vw, -5vh) scale(1.1) rotate(360deg); }
+            33% { transform: translate(12vw, 8vh) scale(1.15) rotate(120deg); }
+            66% { transform: translate(-8vw, 15vh) scale(0.9) rotate(240deg); }
+            100% { transform: translate(5vw, -10vh) scale(1.05) rotate(360deg); }
         }
 
         /* --- Hero Immersif --- */
         .hero {
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 0 20px;
+            padding: 100px 20px;
         }
 
         .hero h1 {
-            font-size: clamp(3rem, 10vw, 7rem);
-            line-height: 0.9;
-            margin-bottom: 30px;
+            font-size: clamp(3.5rem, 11vw, 8rem);
+            line-height: 0.85;
+            margin-bottom: 40px;
+            letter-spacing: -0.02em;
         }
 
-        /* --- Storytelling & Sections --- */
-        .story-section {
-            padding: 150px 0;
-            position: relative;
-        }
+        /* --- Storytelling & Bento --- */
+        .story-section { padding: 160px 0; position: relative; }
 
         .bento-card {
             background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(234, 217, 200, 0.08);
-            border-radius: 40px;
-            padding: 60px;
-            backdrop-filter: blur(10px);
+            border: 1px solid rgba(182, 199, 216, 0.1);
+            border-radius: 48px;
+            padding: 70px;
+            backdrop-filter: blur(12px);
+            transition: border-color 0.5s;
         }
 
-        .service-detail {
-            border-left: 1px solid rgba(255, 91, 142, 0.3);
-            padding-left: 30px;
-            margin-bottom: 80px;
-            transition: 0.5s;
+        .bento-card:hover { border-color: var(--impulsion); }
+
+        .service-row {
+            padding: 60px 0;
+            border-bottom: 1px solid rgba(182, 199, 216, 0.1);
+            transition: all 0.4s;
         }
 
-        .service-detail:hover {
-            border-left-color: var(--impulsion);
-            transform: translateX(10px);
-        }
+        .service-row:hover { padding-left: 20px; }
 
-        .num {
+        .service-row h3 { font-size: 2.8rem; margin-bottom: 15px; color: var(--grege); }
+
+        .num-label {
             font-family: 'Magra', sans-serif;
             color: var(--impulsion);
-            font-size: 0.9rem;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
             display: block;
             margin-bottom: 10px;
         }
@@ -114,63 +127,63 @@
         .btn-kore {
             background: var(--grege);
             color: var(--encre);
-            padding: 20px 50px;
+            padding: 22px 55px;
             border-radius: 100px;
             text-decoration: none;
             font-family: 'Magra', sans-serif;
-            transition: 0.4s;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             display: inline-block;
         }
 
         .btn-kore:hover {
             background: var(--impulsion);
             color: white;
-            box-shadow: 0 0 50px rgba(255, 91, 142, 0.3);
+            box-shadow: 0 0 60px rgba(255, 91, 142, 0.4);
+            transform: scale(1.02);
         }
 
-        .scroll-indicator {
+        .scroll-hint {
             position: absolute;
-            bottom: 40px;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
+            bottom: 50px;
+            font-family: 'Magra', sans-serif;
+            font-size: 0.7rem;
+            letter-spacing: 4px;
             color: var(--ether);
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-10px);}
-            60% {transform: translateY(-5px);}
+            opacity: 0.6;
         }
     </style>
 </head>
 <body>
 
     <div class="blob-container">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
+        <div class="blob blob-pi-1"></div>
+        <div class="blob blob-pi-2"></div>
+        <div class="blob blob-ether-1"></div>
+        <div class="blob blob-ether-2"></div>
+        <div class="blob blob-ether-3"></div>
     </div>
 
-    <section class="hero">
+    <header class="hero">
         <div class="container">
-            <p class="magra mb-4" style="color: var(--impulsion); letter-spacing: 4px;">Kore Agency</p>
-            <h1>Digital transformation from the inside out.</h1>
-            <p class="lead mb-5 fs-4" style="max-width: 800px; margin: 0 auto; color: var(--ether);">Le digital n'est pas virtuel, il est viscéral. Nous repartons du centre pour propulser votre potentiel.</p>
+            <span class="num-label mb-4">Transformation de l'intérieur</span>
+            <h1>Digital transformation<br>from the inside out.</h1>
+            <p class="lead mt-4 mb-5" style="max-width: 700px; margin: 0 auto; color: var(--ether); font-size: 1.4rem;">
+                Le digital n'est pas virtuel, il est viscéral. Nous repartons du centre pour propulser votre potentiel.
+            </p>
             <a href="#manifeste" class="btn-kore">Extraire votre substance</a>
         </div>
-        <div class="scroll-indicator magra">Scroll pour explorer</div>
-    </section>
+        <div class="scroll-hint">SCROLL POUR EXPLORER</div>
+    </header>
 
     <section id="manifeste" class="story-section">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-10">
+                <div class="col-lg-11">
                     <div class="bento-card">
-                        <p class="fs-2 mb-5" style="line-height: 1.4;">
+                        <p class="display-6 mb-5" style="line-height: 1.3; font-family: 'Overlock', sans-serif;">
                             Le monde sature. Trop de bruit, trop de flux, trop d’interfaces sans âme. Dans cette accélération effrénée, le digital a parfois perdu son Kore. Son noyau. Sa raison d'être.
                         </p>
-                        <p class="fs-5 text-secondary">
+                        <p class="fs-4 opacity-75" style="color: var(--ether);">
                             Chez Kore, nous ne croyons pas à la transformation digitale cosmétique. Nous ne sommes pas là pour ajouter une couche de vernis sur des structures obsolètes. Nous sommes là pour extraire la substance brute de votre projet.
                         </p>
                     </div>
@@ -181,19 +194,18 @@
 
     <section class="story-section">
         <div class="container">
-            <h2 class="display-4 mb-5 text-center">La méthode du centre</h2>
             <div class="row g-5">
-                <div class="col-md-4 text-center">
-                    <h3 class="h4 mb-4" style="color: var(--impulsion);">Core Values</h3>
-                    <p>Identifier l'invisible. Sans valeurs réelles, la technologie est vide de sens. Nous ancrons votre projet dans sa vérité.</p>
+                <div class="col-md-4">
+                    <h3>Core Values</h3>
+                    <p class="mt-4">Identifier l'invisible. Sans valeurs réelles, la technologie est vide de sens. Nous ancrons votre projet dans sa vérité profonde.</p>
                 </div>
-                <div class="col-md-4 text-center">
-                    <h3 class="h4 mb-4" style="color: var(--impulsion);">Core Tech</h3>
-                    <p>Construire l'invincible. L'innovation doit être solide, pas seulement brillante. Nous codons pour la durabilité.</p>
+                <div class="col-md-4">
+                    <h3>Core Tech</h3>
+                    <p class="mt-4">Construire l'invincible. L'innovation doit être solide, pas seulement brillante. Nous codons pour la durabilité et la performance brute.</p>
                 </div>
-                <div class="col-md-4 text-center">
-                    <h3 class="h4 mb-4" style="color: var(--impulsion);">Core Human</h3>
-                    <p>Ressentir le tangible. Derrière chaque pixel, il y a un battement de cœur. Nous créons pour l'expérience humaine.</p>
+                <div class="col-md-4">
+                    <h3>Core Human</h3>
+                    <p class="mt-4">Ressentir le tangible. Derrière chaque pixel, il y a un battement de cœur. Nous créons pour l'expérience humaine viscérale.</p>
                 </div>
             </div>
         </div>
@@ -201,70 +213,64 @@
 
     <section id="services" class="story-section">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="sticky-top" style="top: 150px;">
-                        <h2 class="display-3">Nos <br>expertises.</h2>
-                        <p class="text-secondary mt-4">Une suite logicielle et créative pensée pour la transformation totale.</p>
-                    </div>
-                </div>
-                <div class="col-lg-8">
-                    <div class="service-detail">
-                        <span class="num">01 / Analyse</span>
-                        <h3 class="h2 mb-4">Audit et stratégie digitale</h3>
-                        <p>Nous plongeons dans vos processus pour identifier les frictions. Ce n'est pas un simple rapport, c'est une cartographie de votre futur noyau numérique.</p>
-                    </div>
+            <div class="mb-5 pb-5">
+                <h2 class="display-3">Nos expertises.</h2>
+            </div>
+            
+            <div class="service-row">
+                <span class="num-label">01 / Analyse</span>
+                <h3>Audit et stratégie digitale</h3>
+                <p class="col-lg-6 offset-lg-6">Nous plongeons dans vos processus pour identifier les frictions. Ce n'est pas un rapport, c'est une cartographie de votre futur noyau numérique.</p>
+            </div>
 
-                    <div class="service-detail">
-                        <span class="num">02 / Structure</span>
-                        <h3 class="h2 mb-4">Architecture cloud</h3>
-                        <p>Des fondations invisibles mais indestructibles. Nous migrons et optimisons vos infrastructures pour une agilité totale face aux pics de croissance.</p>
-                    </div>
+            <div class="service-row">
+                <span class="num-label">02 / Infrastructure</span>
+                <h3>Architecture cloud</h3>
+                <p class="col-lg-6 offset-lg-6">Des fondations invisibles mais indestructibles. Nous optimisons vos infrastructures pour une agilité totale face à la croissance.</p>
+            </div>
 
-                    <div class="service-detail">
-                        <span class="num">03 / Moteur</span>
-                        <h3 class="h2 mb-4">Ingénierie logicielle et automatisation</h3>
-                        <p>Le code est notre outil de curateur. Nous développons des solutions propriétaires et automatisons les tâches répétitives pour libérer votre Core Human.</p>
-                    </div>
+            <div class="service-row">
+                <span class="num-label">03 / Code</span>
+                <h3>Ingénierie logicielle</h3>
+                <p class="col-lg-6 offset-lg-6">Le code est notre outil de curateur. Nous développons des solutions propriétaires pour libérer votre Core Human.</p>
+            </div>
 
-                    <div class="service-detail">
-                        <span class="num">04 / Intelligence</span>
-                        <h3 class="h2 mb-4">BI et Data analytics</h3>
-                        <p>Transformer vos flux de données en décisions viscérales. Nous créons des dashboards qui ne montrent pas seulement des chiffres, mais des opportunités.</p>
-                    </div>
+            <div class="service-row">
+                <span class="num-label">04 / Data</span>
+                <h3>BI et Data analytics</h3>
+                <p class="col-lg-6 offset-lg-6">Transformer vos flux de données en décisions viscérales. Nous créons des dashboards qui révèlent les opportunités cachées.</p>
+            </div>
 
-                    <div class="service-detail">
-                        <span class="num">05 / Interface</span>
-                        <h3 class="h2 mb-4">UX/UI Design</h3>
-                        <p>L'interface est la membrane entre votre business et vos utilisateurs. Elle doit être intuitive, élégante et surtout, elle doit avoir une âme.</p>
-                    </div>
+            <div class="service-row">
+                <span class="num-label">05 / Expérience</span>
+                <h3>UX/UI Design</h3>
+                <p class="col-lg-6 offset-lg-6">L'interface est la membrane entre votre business et vos utilisateurs. Elle doit être intuitive, élégante et habitée.</p>
+            </div>
 
-                    <div class="service-detail">
-                        <span class="num">06 / Rayonnement</span>
-                        <h3 class="h2 mb-4">Branding et création de contenus</h3>
-                        <p>Donner une voix à la substance brute. Nous créons des identités visuelles et narratives qui résonnent bien au-delà de l'écran.</p>
-                    </div>
-                </div>
+            <div class="service-row border-0">
+                <span class="num-label">06 / Image</span>
+                <h3>Branding et contenu</h3>
+                <p class="col-lg-6 offset-lg-6">Donner une voix à la substance brute. Nous créons des identités narratives qui résonnent bien au-delà de l'écran.</p>
             </div>
         </div>
     </section>
 
     <section class="story-section">
         <div class="container">
-            <div class="bento-card">
-                <h2 class="display-5 mb-5 text-center">Vos curateurs</h2>
-                <div class="row g-4 text-center">
+            <div class="bento-card text-center">
+                <h2 class="display-5 mb-5">Les Curateurs de Potentiel</h2>
+                <div class="row g-4">
                     <div class="col-md-4">
-                        <h4 class="mb-2">Sarah</h4>
-                        <p class="small text-secondary">Responsable Stratégie Digitale et Systèmes</p>
+                        <h3 class="fs-2">Sarah</h3>
+                        <p class="small magra text-secondary">Stratégie et Systèmes</p>
                     </div>
                     <div class="col-md-4">
-                        <h4 class="mb-2">Alyssa</h4>
-                        <p class="small text-secondary">Responsable Expérience et Social Media</p>
+                        <h3 class="fs-2">Alyssa</h3>
+                        <p class="small magra text-secondary">Expérience et Social</p>
                     </div>
                     <div class="col-md-4">
-                        <h4 class="mb-2">Manon</h4>
-                        <p class="small text-secondary">Responsable Identité et Design</p>
+                        <h3 class="fs-2">Manon</h3>
+                        <p class="small magra text-secondary">Identité et Design</p>
                     </div>
                 </div>
             </div>
@@ -273,11 +279,10 @@
 
     <footer class="story-section text-center">
         <div class="container">
-            <h2 class="display-2 mb-5">Prêt à aller loin ?</h2>
-            <p class="fs-4 mb-5 opacity-75">On nous dit d'aller vite. Nous choisissons d'aller loin, en partant du centre.</p>
+            <h2 class="display-3 mb-5">Prêt à partir du centre ?</h2>
             <a href="mailto:hello@kore.ag" class="btn-kore">Commencer l'extraction</a>
             <div class="mt-5 pt-5 opacity-25">
-                <p>© 2026 Kore — Digital transformation from the inside out.</p>
+                <p class="small magra">© 2026 KORE AGENCY — TOUS DROITS RÉSERVÉS</p>
             </div>
         </div>
     </footer>

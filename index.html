@@ -40,78 +40,68 @@
             text-transform: none;
         }
 
-        /* --- Background Multi-Blobs (Mouvement Intensifié & Continu) --- */
+        /* --- Background Multi-Blobs (Vitesse Maximale) --- */
         .blob-container {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1;
-            filter: blur(90px);
-            opacity: 0.6; /* Légèrement plus visible */
+            filter: blur(100px);
+            opacity: 0.7;
         }
 
         .blob {
             position: absolute;
             border-radius: 50%;
-            /* Animation linéaire et infinie pour un mouvement continu sans pause */
-            animation: moveComplex infinite linear;
+            animation: moveFast infinite linear;
         }
 
-        /* Trajectoires et vitesses désynchronisées pour le chaos */
-        
-        /* Blobs Prunelle / Impulsion (Chauds) */
+        /* Blobs Chauds - Très rapides */
         .blob-pi-1 { 
-            width: 700px; height: 700px; 
-            top: -10%; left: -10%; 
+            width: 600px; height: 600px; 
+            top: 10%; left: 10%; 
             background: linear-gradient(135deg, var(--prunelle), var(--impulsion)); 
-            animation-duration: 35s; 
+            animation-duration: 8s; 
         }
         .blob-pi-2 { 
-            width: 600px; height: 600px; 
-            bottom: -15%; right: -10%; 
+            width: 550px; height: 550px; 
+            bottom: 10%; right: 10%; 
             background: linear-gradient(135deg, var(--impulsion), var(--prunelle)); 
-            animation-duration: 45s; 
-            animation-delay: -5s; 
+            animation-duration: 10s; 
+            animation-delay: -2s; 
         }
         
-        /* Blobs Éther (Froids) */
+        /* Blobs Éther - Rapides */
         .blob-ether-1 { 
-            width: 500px; height: 500px; 
-            top: 15%; right: 10%; 
+            width: 450px; height: 450px; 
+            top: 40%; right: 20%; 
             background: var(--ether); 
-            opacity: 0.6; 
-            animation-duration: 40s; 
-            animation-delay: -10s; 
+            animation-duration: 12s; 
+            animation-delay: -4s; 
         }
         .blob-ether-2 { 
             width: 400px; height: 400px; 
-            bottom: 10%; left: 5%; 
+            bottom: 30%; left: 15%; 
             background: var(--ether); 
-            opacity: 0.5; 
-            animation-duration: 55s; 
+            animation-duration: 9s; 
+            animation-delay: -1s;
         }
         .blob-ether-3 { 
-            width: 350px; height: 350px; 
-            top: 45%; left: 35%; 
+            width: 300px; height: 300px; 
+            top: 50%; left: 50%; 
             background: var(--ether); 
-            opacity: 0.4; 
-            animation-duration: 30s; 
-            animation-delay: -15s; 
+            animation-duration: 11s; 
         }
 
-        /* Keyframes complexes pour un mouvement en boucle perpétuelle et intense */
-        @keyframes moveComplex {
-            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
-            12.5% { transform: translate(15vw, 5vh) scale(1.1) rotate(45deg); }
-            25% { transform: translate(10vw, 20vh) scale(0.9) rotate(90deg); }
-            37.5% { transform: translate(-5vw, 15vh) scale(1.15) rotate(135deg); }
-            50% { transform: translate(-15vw, 10vh) scale(1) rotate(180deg); }
-            62.5% { transform: translate(-10vw, -10vh) scale(0.95) rotate(225deg); }
-            75% { transform: translate(5vw, -20vh) scale(1.1) rotate(270deg); }
-            87.5% { transform: translate(18vw, -5vh) scale(1.05) rotate(315deg); }
-            100% { transform: translate(0, 0) scale(1) rotate(360deg); }
+        /* Animation à haute amplitude et vitesse */
+        @keyframes moveFast {
+            0% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 0.6; }
+            25% { transform: translate(30vw, 20vh) scale(1.3) rotate(90deg); opacity: 0.8; }
+            50% { transform: translate(10vw, 40vh) scale(1) rotate(180deg); opacity: 0.6; }
+            75% { transform: translate(-20vw, 15vh) scale(1.2) rotate(270deg); opacity: 0.8; }
+            100% { transform: translate(0, 0) scale(1) rotate(360deg); opacity: 0.6; }
         }
 
-        /* --- Hero Immersif --- */
+        /* --- Sections Immersives --- */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -126,69 +116,53 @@
             font-size: clamp(3.5rem, 11vw, 8rem);
             line-height: 0.85;
             margin-bottom: 40px;
-            letter-spacing: -0.02em;
         }
 
-        /* --- Storytelling & Bento --- */
-        .story-section { padding: 160px 0; position: relative; }
+        .story-section { padding: 180px 0; position: relative; }
 
         .bento-card {
-            background: rgba(255, 255, 255, 0.02);
+            background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(182, 199, 216, 0.1);
             border-radius: 48px;
-            padding: 70px;
-            backdrop-filter: blur(12px);
-            transition: border-color 0.5s;
+            padding: 80px;
+            backdrop-filter: blur(15px);
         }
-
-        .bento-card:hover { border-color: var(--impulsion); }
 
         .service-row {
-            padding: 60px 0;
+            padding: 70px 0;
             border-bottom: 1px solid rgba(182, 199, 216, 0.1);
-            transition: all 0.4s;
+            transition: all 0.3s ease-out;
         }
 
-        .service-row:hover { padding-left: 20px; }
+        .service-row:hover { padding-left: 30px; border-bottom-color: var(--impulsion); }
 
-        .service-row h3 { font-size: 2.8rem; margin-bottom: 15px; color: var(--grege); }
+        .service-row h3 { font-size: 3.5rem; color: var(--grege); }
 
         .num-label {
             font-family: 'Magra', sans-serif;
             color: var(--impulsion);
             font-size: 0.8rem;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             display: block;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
-        /* --- Boutons --- */
         .btn-kore {
             background: var(--grege);
             color: var(--encre);
-            padding: 22px 55px;
+            padding: 24px 60px;
             border-radius: 100px;
             text-decoration: none;
             font-family: 'Magra', sans-serif;
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
             display: inline-block;
         }
 
         .btn-kore:hover {
             background: var(--impulsion);
             color: white;
-            box-shadow: 0 0 60px rgba(255, 91, 142, 0.4);
-            transform: scale(1.02);
-        }
-
-        .scroll-hint {
-            position: absolute;
-            bottom: 50px;
-            font-family: 'Magra', sans-serif;
-            font-size: 0.7rem;
-            letter-spacing: 4px;
-            color: var(--ether);
-            opacity: 0.6;
+            box-shadow: 0 0 70px rgba(255, 91, 142, 0.5);
+            transform: translateY(-5px);
         }
     </style>
 </head>
@@ -204,29 +178,24 @@
 
     <header class="hero">
         <div class="container">
-            <span class="num-label mb-4">Transformation de l'intérieur</span>
+            <span class="num-label mb-4">Core Agency</span>
             <h1>Digital transformation<br>from the inside out.</h1>
-            <p class="lead mt-4 mb-5" style="max-width: 700px; margin: 0 auto; color: var(--ether); font-size: 1.4rem;">
-                Le digital n'est pas virtuel, il est viscéral. Nous repartons du centre pour propulser votre potentiel.
+            <p class="lead mt-4 mb-5" style="max-width: 800px; margin: 0 auto; color: var(--ether); font-size: 1.5rem;">
+                Le digital est viscéral. Nous extrayons votre substance brute pour bâtir le futur.
             </p>
-            <a href="#manifeste" class="btn-kore">Extraire votre substance</a>
+            <a href="#manifeste" class="btn-kore">Lancer l'extraction</a>
         </div>
-        <div class="scroll-hint">SCROLL POUR EXPLORER</div>
     </header>
 
     <section id="manifeste" class="story-section">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-11">
-                    <div class="bento-card">
-                        <p class="display-6 mb-5" style="line-height: 1.3; font-family: 'Overlock', sans-serif;">
-                            Le monde sature. Trop de bruit, trop de flux, trop d’interfaces sans âme. Dans cette accélération effrénée, le digital a parfois perdu son Kore. Son noyau. Sa raison d'être.
-                        </p>
-                        <p class="fs-4 opacity-75" style="color: var(--ether);">
-                            Chez Kore, nous ne croyons pas à la transformation digitale cosmétique. Nous ne sommes pas là pour ajouter une couche de vernis sur des structures obsolètes. Nous sommes là pour extraire la substance brute de votre projet.
-                        </p>
-                    </div>
-                </div>
+            <div class="bento-card">
+                <p class="display-6 mb-5" style="line-height: 1.2;">
+                    Le monde sature de flux sans âme. Le digital a perdu son noyau. Chez Kore, nous ne croyons pas au vernis. Nous croyons à la structure.
+                </p>
+                <p class="fs-4 opacity-75">
+                    Nous sommes des curateurs de potentiel. Notre mission : retrouver votre Kore pour que votre technologie serve enfin votre vérité.
+                </p>
             </div>
         </div>
     </section>
@@ -236,93 +205,61 @@
             <div class="row g-5">
                 <div class="col-md-4">
                     <h3>Core Values</h3>
-                    <p class="mt-4">Identifier l'invisible. Sans valeurs réelles, la technologie est vide de sens. Nous ancrons votre projet dans sa vérité profonde.</p>
+                    <p class="mt-4">L'ancrage. Nous identifions les piliers invisibles qui rendent votre business unique et indestructible.</p>
                 </div>
                 <div class="col-md-4">
                     <h3>Core Tech</h3>
-                    <p class="mt-4">Construire l'invincible. L'innovation doit être solide, pas seulement brillante. Nous codons pour la durabilité et la performance brute.</p>
+                    <p class="mt-4">La puissance. Une ingénierie brute pensée pour la performance et la durabilité à long terme.</p>
                 </div>
                 <div class="col-md-4">
                     <h3>Core Human</h3>
-                    <p class="mt-4">Ressentir le tangible. Derrière chaque pixel, il y a un battement de cœur. Nous créons pour l'expérience humaine viscérale.</p>
+                    <p class="mt-4">L'émotion. Parce que chaque interface est une conversation entre deux battements de cœur.</p>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="services" class="story-section">
-        <div class="container">
-            <div class="mb-5 pb-5">
-                <h2 class="display-3">Nos expertises.</h2>
-            </div>
-            
-            <div class="service-row">
-                <span class="num-label">01 / Analyse</span>
-                <h3>Audit et stratégie digitale</h3>
-                <p class="col-lg-6 offset-lg-6">Nous plongeons dans vos processus pour identifier les frictions. Ce n'est pas un rapport, c'est une cartographie de votre futur noyau numérique.</p>
-            </div>
-
-            <div class="service-row">
-                <span class="num-label">02 / Infrastructure</span>
-                <h3>Architecture cloud</h3>
-                <p class="col-lg-6 offset-lg-6">Des fondations invisibles mais indestructibles. Nous optimisons vos infrastructures pour une agilité totale face à la croissance.</p>
-            </div>
-
-            <div class="service-row">
-                <span class="num-label">03 / Code</span>
-                <h3>Ingénierie logicielle</h3>
-                <p class="col-lg-6 offset-lg-6">Le code est notre outil de curateur. Nous développons des solutions propriétaires pour libérer votre Core Human.</p>
-            </div>
-
-            <div class="service-row">
-                <span class="num-label">04 / Data</span>
-                <h3>BI et Data analytics</h3>
-                <p class="col-lg-6 offset-lg-6">Transformer vos flux de données en décisions viscérales. Nous créons des dashboards qui révèlent les opportunités cachées.</p>
-            </div>
-
-            <div class="service-row">
-                <span class="num-label">05 / Expérience</span>
-                <h3>UX/UI Design</h3>
-                <p class="col-lg-6 offset-lg-6">L'interface est la membrane entre votre business et vos utilisateurs. Elle doit être intuitive, élégante et habitée.</p>
-            </div>
-
-            <div class="service-row border-0">
-                <span class="num-label">06 / Image</span>
-                <h3>Branding et contenu</h3>
-                <p class="col-lg-6 offset-lg-6">Donner une voix à la substance brute. Nous créons des identités narratives qui résonnent bien au-delà de l'écran.</p>
             </div>
         </div>
     </section>
 
     <section class="story-section">
         <div class="container">
-            <div class="bento-card text-center">
-                <h2 class="display-5 mb-5">Les Curateurs de Potentiel</h2>
-                <div class="row g-4">
-                    <div class="col-md-4">
-                        <h3 class="fs-2">Sarah</h3>
-                        <p class="small magra text-secondary">Stratégie et Systèmes</p>
-                    </div>
-                    <div class="col-md-4">
-                        <h3 class="fs-2">Alyssa</h3>
-                        <p class="small magra text-secondary">Expérience et Social</p>
-                    </div>
-                    <div class="col-md-4">
-                        <h3 class="fs-2">Manon</h3>
-                        <p class="small magra text-secondary">Identité et Design</p>
-                    </div>
-                </div>
+            <h2 class="display-3 mb-5">Nos expertises.</h2>
+            
+            <div class="service-row">
+                <span class="num-label">01 / Analyse</span>
+                <h3>Audit Stratégique</h3>
+                <p class="col-lg-6 offset-lg-6">Cartographier l'existant pour libérer le potentiel caché sous les frictions numériques.</p>
+            </div>
+
+            <div class="service-row">
+                <span class="num-label">02 / Structure</span>
+                <h3>Architecture Cloud</h3>
+                <p class="col-lg-6 offset-lg-6">Bâtir des écosystèmes invisibles capables de supporter vos ambitions les plus folles.</p>
+            </div>
+
+            <div class="service-row">
+                <span class="num-label">03 / Moteur</span>
+                <h3>Ingénierie Logicielle</h3>
+                <p class="col-lg-6 offset-lg-6">Développer des outils propriétaires qui automatisent l'inutile pour magnifier l'essentiel.</p>
+            </div>
+
+            <div class="service-row">
+                <span class="num-label">04 / Vision</span>
+                <h3>UX/UI Design</h3>
+                <p class="col-lg-6 offset-lg-6">Concevoir des membranes numériques élégantes, habitées et redoutablement efficaces.</p>
+            </div>
+
+            <div class="service-row border-0">
+                <span class="num-label">05 / Éclat</span>
+                <h3>Branding Substance</h3>
+                <p class="col-lg-6 offset-lg-6">Donner une voix et un visage à votre substance brute pour qu'elle résonne partout.</p>
             </div>
         </div>
     </section>
 
     <footer class="story-section text-center">
         <div class="container">
-            <h2 class="display-3 mb-5">Prêt à partir du centre ?</h2>
-            <a href="mailto:hello@kore.ag" class="btn-kore">Commencer l'extraction</a>
-            <div class="mt-5 pt-5 opacity-25">
-                <p class="small magra">© 2026 KORE AGENCY — TOUS DROITS RÉSERVÉS</p>
-            </div>
+            <h2 class="display-2 mb-5">Prêt à partir du centre ?</h2>
+            <a href="mailto:hello@kore.ag" class="btn-kore">Démarrer maintenant</a>
+            <p class="mt-5 pt-5 opacity-25 magra">© 2026 KORE AGENCY — DIGITAL VISCÉRAL</p>
         </div>
     </footer>
 
